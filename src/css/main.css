@@ -1,6 +1,7 @@
 /* 吉卜力风格变量 */
 :root {
     --primary-color: #4A90E2;  /* 天空蓝 */
+    --primary-color-rgb: 74, 144, 226;  /* 天空蓝的 RGB 值 */
     --secondary-color: #F5A623;  /* 温暖橙 */
     --background-color: #F8F9FA;  /* 米白色背景 */
     --text-color: #2C3E50;  /* 深灰文字 */

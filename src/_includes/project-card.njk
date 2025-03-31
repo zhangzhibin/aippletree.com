@@ -1,28 +1,30 @@
-{% if project and project.data %}
+{%- if project and project.data -%}
 <div class="project-card">
-    <div class="project-thumbnail" style="background-color: {{ project.data.background_color | default('#4a90e2') }}">
-        {% if project.data.thumbnail %}
+    <a href="{{ project.url }}" class="project-thumbnail-link" {% if project.data.background_color %}style="background-color: {{ project.data.background_color }}"{% else %}style="background-color: #4a90e2"{% endif %}>
+        {%- if project.data.thumbnail -%}
             <img src="{{ project.data.thumbnail }}" alt="{{ project.data.title }}">
-        {% else %}
+        {%- else -%}
             <div class="project-thumbnail-placeholder">
                 <h3>{{ project.data.title }}</h3>
             </div>
-        {% endif %}
-    </div>
+        {%- endif -%}
+    </a>
     <div class="project-card-content">
-        <h3 class="project-card-title">{{ project.data.title }}</h3>
+        <h3 class="project-card-title">
+            <a href="{{ project.url }}" class="project-card-title-link">{{ project.data.title }}</a>
+        </h3>
         <p class="project-card-description">{{ project.data.description }}</p>
         <div class="project-card-tags">
-            {% if project.data.techStack %}
-                {% for tag in project.data.techStack %}
+            {%- if project.data.techStack -%}
+                {%- for tag in project.data.techStack -%}
                     <span class="project-card-tag">{{ tag }}</span>
-                {% endfor %}
-            {% endif %}
+                {%- endfor -%}
+            {%- endif -%}
         </div>
         <a href="{{ project.url }}" class="project-card-link">Learn More</a>
     </div>
 </div>
-{% else %}
+{%- else -%}
 <!-- Debug info for missing project data -->
 <div class="project-card" style="border: 2px solid red;">
     <div class="project-card-content">
@@ -31,4 +33,4 @@
         <pre style="font-size: 12px;">{{ project | dump }}</pre>
     </div>
 </div>
-{% endif %} 
+{%- endif -%} 
