@@ -1,108 +1,34 @@
-<div class="project-card" style="background: {{ background_color | default('#4a90e2') }}">
+{% if project and project.data %}
+<div class="project-card">
+    <div class="project-thumbnail" style="background-color: {{ project.data.background_color | default('#4a90e2') }}">
+        {% if project.data.thumbnail %}
+            <img src="{{ project.data.thumbnail }}" alt="{{ project.data.title }}">
+        {% else %}
+            <div class="project-thumbnail-placeholder">
+                <h3>{{ project.data.title }}</h3>
+            </div>
+        {% endif %}
+    </div>
     <div class="project-card-content">
-        <h3 class="project-card-title">{{ project.title }}</h3>
-        <p class="project-card-description">{{ project.description }}</p>
+        <h3 class="project-card-title">{{ project.data.title }}</h3>
+        <p class="project-card-description">{{ project.data.description }}</p>
         <div class="project-card-tags">
-            {% for tag in project.tags %}
-            <span class="project-card-tag">{{ tag }}</span>
-            {% endfor %}
+            {% if project.data.techStack %}
+                {% for tag in project.data.techStack %}
+                    <span class="project-card-tag">{{ tag }}</span>
+                {% endfor %}
+            {% endif %}
         </div>
-        <a href="{{ project.url }}" class="project-card-link">查看详情 →</a>
+        <a href="{{ project.url }}" class="project-card-link">Learn More</a>
     </div>
 </div>
-
-<style>
-    .project-card {
-        border-radius: var(--border-radius);
-        padding: 1.5rem;
-        height: 100%;
-        color: white;
-        position: relative;
-        overflow: hidden;
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-
-    .project-card:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 8px 24px var(--shadow-color);
-    }
-
-    .project-card::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: linear-gradient(45deg, rgba(0,0,0,0.2), transparent);
-        z-index: 1;
-    }
-
-    .project-card-content {
-        position: relative;
-        z-index: 2;
-    }
-
-    .project-card-title {
-        font-size: 1.5rem;
-        margin-bottom: 0.75rem;
-        color: white;
-    }
-
-    .project-card-description {
-        font-size: 1rem;
-        margin-bottom: 1rem;
-        opacity: 0.9;
-    }
-
-    .project-card-tags {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 0.5rem;
-        margin-bottom: 1rem;
-    }
-
-    .project-card-tag {
-        background: rgba(255,255,255,0.2);
-        padding: 0.25rem 0.75rem;
-        border-radius: 1rem;
-        font-size: 0.85rem;
-    }
-
-    .project-card-link {
-        color: white;
-        text-decoration: none;
-        font-weight: 500;
-        display: inline-block;
-        transition: transform 0.2s ease;
-    }
-
-    .project-card-link:hover {
-        transform: translateX(5px);
-        text-decoration: none;
-    }
-
-    @media (max-width: 768px) {
-        .project-card {
-            padding: 1.25rem;
-        }
-
-        .project-card-title {
-            font-size: 1.25rem;
-        }
-
-        .project-card-description {
-            font-size: 0.95rem;
-        }
-    }
-
-    @media (max-width: 480px) {
-        .project-card {
-            padding: 1rem;
-        }
-
-        .project-card-tag {
-            font-size: 0.8rem;
-        }
-    }
-</style> 
+{% else %}
+<!-- Debug info for missing project data -->
+<div class="project-card" style="border: 2px solid red;">
+    <div class="project-card-content">
+        <h3 class="project-card-title">Debug Info</h3>
+        <p class="project-card-description">Project data is missing</p>
+        <pre style="font-size: 12px;">{{ project | dump }}</pre>
+    </div>
+</div>
+{% endif %} 

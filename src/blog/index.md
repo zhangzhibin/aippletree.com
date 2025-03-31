@@ -12,7 +12,7 @@ Here are my latest blog posts about web development, mobile development, and des
 
 ### [{{ post.data.title }}]({{ post.url }})
 
-{{ post.data.date | dateFormat }}
+{{ post.data.date | formatDate }}
 
 {% if post.data.description %}
 {{ post.data.description }}
@@ -56,5 +56,5 @@ Here are my latest blog posts about web development, mobile development, and des
 
 {% for post in collections.blog | reverse %}
 
-- [{{ post.data.title }}]({{ post.url }}) ({{ post.data.date | dateFormat }})
+- [{{ post.data.title }}]({{ post.url }}) ({{ post.data.date | formatDate }})
   {% endfor %}

@@ -4,7 +4,7 @@
   "description": "个人项目展示与博客网站",
   "main": "index.js",
   "scripts": {
-    "start": "eleventy --serve & npx tailwindcss -i ./src/css/style.css -o ./_site/css/style.css --watch",
+    "start": "eleventy --serve & npx tailwindcss -i ./src/css/main.css -o ./_site/css/main.css --watch",
     "build": "eleventy",
     "test": "echo \"Error: no test specified\" && exit 1"
   },

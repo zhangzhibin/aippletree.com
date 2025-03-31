@@ -49,5 +49,5 @@ A collection of reusable UI components with a focus on accessibility and customi
 
 {% for project in collections.projects %}
 
-- [{{ project.data.title }}]({{ project.url }}) ({{ project.data.date | dateFormat }})
+- [{{ project.data.title }}]({{ project.url }}) ({{ project.data.date | formatDate }})
   {% endfor %}

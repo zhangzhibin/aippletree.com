@@ -4,103 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ title }}</title>
-    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/layouts.css">
+    <link rel="stylesheet" href="/css/components.css">
+    {% if extraStyles %}
+    <link rel="stylesheet" href="{{ extraStyles }}">
+    {% endif %}
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --primary-color: #4a90e2;
-            --secondary-color: #8e44ad;
-            --text-color: #333;
-            --background-color: #f5f7fa;
-            --border-color: #e1e4e8;
-            --shadow-color: rgba(0, 0, 0, 0.1);
-            --border-radius: 8px;
-            --container-width: 1200px;
-            --container-padding: 1rem;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-            line-height: 1.6;
-            color: var(--text-color);
-            background: var(--background-color);
-        }
-
-        .container {
-            max-width: var(--container-width);
-            margin: 0 auto;
-            padding: 0 var(--container-padding);
-            width: 100%;
-        }
-
-        h1, h2, h3, h4, h5, h6 {
-            line-height: 1.2;
-            margin-bottom: 1rem;
-        }
-
-        img {
-            max-width: 100%;
-            height: auto;
-        }
-
-        a {
-            color: var(--primary-color);
-            text-decoration: none;
-        }
-
-        a:hover {
-            text-decoration: underline;
-        }
-
-        main {
-            min-height: calc(100vh - 60px);
-            padding: 2rem 0;
-        }
-
-        @media (max-width: 768px) {
-            :root {
-                --container-padding: 1rem;
-            }
-
-            main {
-                padding: 1.5rem 0;
-            }
-        }
-
-        @media (max-width: 480px) {
-            :root {
-                --container-padding: 0.75rem;
-            }
-
-            main {
-                padding: 1rem 0;
-            }
-        }
-
-        /* 内容包装器 */
-        .content-wrapper {
-            background: rgba(255, 255, 255, 0.9);
-            border-radius: var(--border-radius);
-            padding: 2rem;
-            box-shadow: 0 4px 20px var(--shadow-color);
-            backdrop-filter: blur(10px);
-        }
-    </style>
 </head>
-<body>
-    {% include "background.njk" %}
+<body class="layout">
     {% include "nav.njk" %}
-
-    <main>
-        <div class="container">
-            {{ content | safe }}
-        </div>
+    {% include "background.njk" %}
+    
+    <main class="layout-content">
+        {{ content | safe }}
     </main>
 
     {% include "footer.njk" %}

@@ -1,70 +1,32 @@
 <section id="articles" class="section">
-    <div class="container">
+    <div class="section-content">
         <h2 class="section-title">{{ section.title | default('Latest Articles') }}</h2>
-        <div class="blog-grid">
-            {% for post in collections.blog | reverse | limit(section.limit | default(6)) %}
-            {% include "blog-card.njk" %}
-            {% endfor %}
+        <!-- Debug info -->
+        <div style="display: none;">
+            <h4>Debug Info:</h4>
+            <div>Section Limit: {{ section.limit }}</div>
+            <div>Blog Posts Count: {{ collections.blog | length }}</div>
+            <div>Posts:</div>
+            {%- for post in collections.blog | reverse -%}
+            <div style="margin-left: 20px;">
+                - {{ post.data.title }} (date: {{ post.date }})
+            </div>
+            {%- endfor -%}
         </div>
-        {% if section.viewAll %}
+        <!-- End debug info -->
+        <div class="blog-grid">
+            {%- for post in collections.blog | reverse -%}
+                {%- if loop.index0 < (section.limit | default(6)) -%}
+                    {%- include "blog-card.njk" -%}
+                {%- endif -%}
+            {%- endfor -%}
+        </div>
+        {%- if section.viewAll -%}
         <div class="section-footer">
             <a href="{{ section.viewAll.url | default('/blog') }}" class="view-all">
                 {{ section.viewAll.text | default('View All Articles →') }}
             </a>
         </div>
-        {% endif %}
+        {%- endif -%}
     </div>
-</section>
-
-<style>
-    .section {
-        padding: 3rem 0;
-    }
-
-    .section-title {
-        text-align: center;
-        margin-bottom: 2rem;
-        font-size: 2rem;
-    }
-
-    .blog-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        gap: 1.5rem;
-        margin-bottom: 2rem;
-    }
-
-    .section-footer {
-        text-align: center;
-    }
-
-    .view-all {
-        display: inline-block;
-        padding: 0.75rem 1.5rem;
-        color: var(--primary-color);
-        text-decoration: none;
-        font-weight: 500;
-        transition: transform 0.2s ease;
-    }
-
-    .view-all:hover {
-        transform: translateX(5px);
-        text-decoration: none;
-    }
-
-    @media (max-width: 768px) {
-        .section {
-            padding: 2rem 0;
-        }
-
-        .section-title {
-            font-size: 1.75rem;
-        }
-    }
-
-    @media (max-width: 480px) {
-        .blog-grid {
-            grid-template-columns: 1fr;
-        }
-    }
-</style> 
+</section> 

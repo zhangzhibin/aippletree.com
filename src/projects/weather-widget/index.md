@@ -2,10 +2,13 @@
 layout: project.njk
 title: Weather Widget
 date: 2024-03-19
+description: A customizable weather widget component for web applications. Provides real-time weather information with a clean, modern design.
 tags: ["Web Development", "JavaScript", "API"]
 techStack: ["JavaScript", "CSS", "OpenWeather API"]
 demoUrl: "https://aippletree.com/weather-widget"
 githubUrl: "https://github.com/aippletree/weather-widget"
+featured: false
+background_color: "#e67e22"
 ---
 
 ## Overview

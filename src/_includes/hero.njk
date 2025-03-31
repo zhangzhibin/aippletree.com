@@ -1,102 +1,14 @@
 <section class="hero">
-    <div class="container">
+    <div class="hero-content">
         <h1 class="hero-title">{{ hero.title | default('Welcome to AippleTree') }}</h1>
         <p class="hero-subtitle">{{ hero.subtitle | default('Discover Amazing Projects & Insights') }}</p>
         <div class="hero-actions">
             {% if hero.primaryButton %}
-            <a href="{{ hero.primaryButton.url }}" class="hero-button">{{ hero.primaryButton.text }}</a>
+            <a href="{{ hero.primaryButton.url }}" class="hero-button primary">{{ hero.primaryButton.text }}</a>
             {% endif %}
             {% if hero.secondaryButton %}
             <a href="{{ hero.secondaryButton.url }}" class="hero-button secondary">{{ hero.secondaryButton.text }}</a>
             {% endif %}
         </div>
     </div>
-</section>
-
-<style>
-    .hero {
-        text-align: center;
-        padding: 4rem 0;
-        background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-        color: white;
-        margin-bottom: 2rem;
-    }
-
-    .hero-title {
-        font-size: 3rem;
-        margin-bottom: 1rem;
-        color: white;
-    }
-
-    .hero-subtitle {
-        font-size: 1.25rem;
-        margin-bottom: 2rem;
-        opacity: 0.9;
-    }
-
-    .hero-actions {
-        display: flex;
-        gap: 1rem;
-        justify-content: center;
-    }
-
-    .hero-button {
-        display: inline-block;
-        padding: 0.75rem 1.5rem;
-        border-radius: var(--border-radius);
-        background: white;
-        color: var(--primary-color);
-        text-decoration: none;
-        font-weight: 500;
-        transition: transform 0.2s ease, box-shadow 0.2s ease;
-    }
-
-    .hero-button.secondary {
-        background: transparent;
-        color: white;
-        border: 2px solid white;
-    }
-
-    .hero-button:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-        text-decoration: none;
-    }
-
-    @media (max-width: 768px) {
-        .hero {
-            padding: 3rem 0;
-        }
-
-        .hero-title {
-            font-size: 2.5rem;
-        }
-
-        .hero-subtitle {
-            font-size: 1.1rem;
-        }
-    }
-
-    @media (max-width: 480px) {
-        .hero {
-            padding: 2.5rem 0;
-        }
-
-        .hero-title {
-            font-size: 2rem;
-        }
-
-        .hero-subtitle {
-            font-size: 1rem;
-        }
-
-        .hero-actions {
-            flex-direction: column;
-            gap: 0.75rem;
-        }
-
-        .hero-button {
-            width: 100%;
-        }
-    }
-</style> 
+</section> 

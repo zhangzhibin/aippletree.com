@@ -106,7 +106,7 @@ githubUrl: "https://github.com/username/repo"
 
 ### Colors and Theme
 
-The site uses CSS custom properties for theming. You can modify the colors in `src/css/style.css`:
+The site uses CSS custom properties for theming. You can modify the colors in `src/css/main.css`:
 
 ```css
 :root {

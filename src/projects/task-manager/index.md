@@ -2,10 +2,13 @@
 layout: project.njk
 title: Task Management App
 date: 2024-03-20
+description: A cross-platform mobile application for task management and productivity tracking. Built with React Native and Firebase.
 tags: ["Mobile Development", "React Native", "Firebase"]
 techStack: ["React Native", "Firebase", "Redux", "TypeScript"]
 demoUrl: "https://play.google.com/store/apps/details?id=com.aippletree.taskmanager"
 githubUrl: "https://github.com/aippletree/task-manager"
+featured: true
+background_color: "#27ae60"
 ---
 
 ## Overview

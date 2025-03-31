@@ -2,11 +2,14 @@
 layout: project.njk
 title: Personal Portfolio Website
 date: 2024-03-21
+description: A modern, responsive portfolio website built with 11ty and styled with custom CSS. Features clean design and smooth animations.
 tags: ["Web Development", "11ty", "CSS"]
 techStack: ["11ty", "Nunjucks", "CSS", "JavaScript"]
 demoUrl: "https://aippletree.com"
 githubUrl: "https://github.com/aippletree/portfolio"
 permalink: "/projects/portfolio-website/"
+featured: true
+background_color: "#4a90e2"
 ---
 
 ## Overview

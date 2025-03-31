@@ -13,8 +13,11 @@ chat 使用中文
 ## css
 
 - 使用 tailwind
-- 集中配置在 /src/css/style.css，方便整体替换风格
 - 吉卜力风格
+- 集中存放在 /src/css 目录中
+  - main.css: 全局样式、变量、基础样式
+  - components.css: 组件样式（如卡片、按钮等）
+  - layouts.css: 布局相关样式（如网格、容器等）
 
 ## 页面类型
 

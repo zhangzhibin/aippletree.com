@@ -1,121 +1,23 @@
 <div class="blog-card">
     <div class="blog-card-content">
         <h3 class="blog-card-title">
-            <a href="{{ post.url }}" class="blog-card-link">{{ post.title }}</a>
+            <a href="{{ post.url }}" class="blog-card-link">{{ post.data.title }}</a>
         </h3>
         <div class="blog-card-meta">
-            <time datetime="{{ post.date | dateISO }}">{{ post.date | dateFormat }}</time>
-            {% if post.readingTime %}
-            <span class="blog-card-reading-time">{{ post.readingTime }} min read</span>
+            <time datetime="{{ post.date | formatISO }}">{{ post.date | formatDate }}</time>
+            {% if post.data.readingTime %}
+            <span class="blog-card-reading-time">{{ post.data.readingTime }} min read</span>
             {% endif %}
         </div>
-        {% if post.description %}
-        <p class="blog-card-description">{{ post.description }}</p>
+        {% if post.data.description %}
+        <p class="blog-card-description">{{ post.data.description }}</p>
         {% endif %}
-        {% if post.tags %}
+        {% if post.data.tags and post.data.tags.length > 0 %}
         <div class="blog-card-tags">
-            {% for tag in post.tags %}
+            {% for tag in post.data.tags %}
             <span class="blog-card-tag">{{ tag }}</span>
             {% endfor %}
         </div>
         {% endif %}
     </div>
-</div>
-
-<style>
-    .blog-card {
-        background: white;
-        border-radius: var(--border-radius);
-        padding: 1.5rem;
-        height: 100%;
-        box-shadow: 0 2px 8px var(--shadow-color);
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-
-    .blog-card:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 8px 24px var(--shadow-color);
-    }
-
-    .blog-card-title {
-        font-size: 1.25rem;
-        margin-bottom: 0.5rem;
-        line-height: 1.3;
-    }
-
-    .blog-card-link {
-        color: var(--text-color);
-        text-decoration: none;
-        transition: color 0.2s ease;
-    }
-
-    .blog-card-link:hover {
-        color: var(--primary-color);
-        text-decoration: none;
-    }
-
-    .blog-card-meta {
-        display: flex;
-        gap: 1rem;
-        font-size: 0.9rem;
-        color: #666;
-        margin-bottom: 0.75rem;
-        align-items: center;
-    }
-
-    .blog-card-reading-time::before {
-        content: "•";
-        margin-right: 1rem;
-    }
-
-    .blog-card-description {
-        font-size: 1rem;
-        color: #666;
-        margin-bottom: 1rem;
-        line-height: 1.5;
-    }
-
-    .blog-card-tags {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 0.5rem;
-    }
-
-    .blog-card-tag {
-        background: var(--background-color);
-        color: var(--text-color);
-        padding: 0.25rem 0.75rem;
-        border-radius: 1rem;
-        font-size: 0.85rem;
-    }
-
-    @media (max-width: 768px) {
-        .blog-card {
-            padding: 1.25rem;
-        }
-
-        .blog-card-title {
-            font-size: 1.1rem;
-        }
-
-        .blog-card-description {
-            font-size: 0.95rem;
-        }
-    }
-
-    @media (max-width: 480px) {
-        .blog-card {
-            padding: 1rem;
-        }
-
-        .blog-card-meta {
-            font-size: 0.85rem;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-        }
-
-        .blog-card-tag {
-            font-size: 0.8rem;
-        }
-    }
-</style> 
+</div> 
