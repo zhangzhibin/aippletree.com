@@ -696,8 +696,6 @@
 }
 
 .about-section .about-contact-button:hover {
-    background-color: var(--primary-color);
-    color: white;
     transform: translateY(-2px);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
@@ -709,10 +707,8 @@
 }
 
 .about-section .about-report-button:hover {
-    background-color: var(--text-color);
-    color: var(--background-color);
-    border-color: var(--text-color);
     transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 @media (max-width: 640px) {
