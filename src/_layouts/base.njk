@@ -6,79 +6,81 @@
     <title>{{ title }}</title>
     <link rel="stylesheet" href="/css/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
-</head>
-<body>
-    <div class="background-decoration">
-        <div class="cloud cloud-1"></div>
-        <div class="cloud cloud-2"></div>
-        <div class="cloud cloud-3"></div>
-    </div>
-    
-    <header>
-        <nav>
-            <a href="/" class="nav-link">Home</a>
-            <a href="/projects" class="nav-link">Projects</a>
-            <a href="/blog" class="nav-link">Blog</a>
-        </nav>
-    </header>
-
-    <main>
-        <div class="content-wrapper">
-            {{ content | safe }}
-        </div>
-    </main>
-
-    <footer>
-        <div class="footer-content">
-            <p>&copy; {{ page.date.getFullYear() }} AippleTree. All rights reserved.</p>
-            <div class="footer-decoration">
-                <span class="leaf leaf-1">🍃</span>
-                <span class="leaf leaf-2">🍃</span>
-                <span class="leaf leaf-3">🍃</span>
-            </div>
-        </div>
-    </footer>
-
     <style>
-        /* 背景装饰 */
-        .background-decoration {
-            position: fixed;
-            top: 0;
-            left: 0;
+        :root {
+            --primary-color: #4a90e2;
+            --secondary-color: #8e44ad;
+            --text-color: #333;
+            --background-color: #f5f7fa;
+            --border-color: #e1e4e8;
+            --shadow-color: rgba(0, 0, 0, 0.1);
+            --border-radius: 8px;
+            --container-width: 1200px;
+            --container-padding: 1rem;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background: var(--background-color);
+        }
+
+        .container {
+            max-width: var(--container-width);
+            margin: 0 auto;
+            padding: 0 var(--container-padding);
             width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: -1;
         }
 
-        .cloud {
-            position: absolute;
-            background: rgba(255, 255, 255, 0.8);
-            border-radius: 50px;
-            animation: float 20s infinite linear;
+        h1, h2, h3, h4, h5, h6 {
+            line-height: 1.2;
+            margin-bottom: 1rem;
         }
 
-        .cloud-1 {
-            width: 100px;
-            height: 40px;
-            top: 10%;
-            left: 10%;
+        img {
+            max-width: 100%;
+            height: auto;
         }
 
-        .cloud-2 {
-            width: 80px;
-            height: 30px;
-            top: 30%;
-            right: 15%;
-            animation-delay: -5s;
+        a {
+            color: var(--primary-color);
+            text-decoration: none;
         }
 
-        .cloud-3 {
-            width: 120px;
-            height: 45px;
-            bottom: 20%;
-            left: 20%;
-            animation-delay: -10s;
+        a:hover {
+            text-decoration: underline;
+        }
+
+        main {
+            min-height: calc(100vh - 60px);
+            padding: 2rem 0;
+        }
+
+        @media (max-width: 768px) {
+            :root {
+                --container-padding: 1rem;
+            }
+
+            main {
+                padding: 1.5rem 0;
+            }
+        }
+
+        @media (max-width: 480px) {
+            :root {
+                --container-padding: 0.75rem;
+            }
+
+            main {
+                padding: 1rem 0;
+            }
         }
 
         /* 内容包装器 */
@@ -89,42 +91,18 @@
             box-shadow: 0 4px 20px var(--shadow-color);
             backdrop-filter: blur(10px);
         }
-
-        /* 页脚装饰 */
-        .footer-content {
-            position: relative;
-            padding: 1rem;
-        }
-
-        .footer-decoration {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-        }
-
-        .leaf {
-            position: absolute;
-            font-size: 1.5rem;
-            animation: float 3s infinite ease-in-out;
-        }
-
-        .leaf-1 {
-            left: 10%;
-            animation-delay: 0s;
-        }
-
-        .leaf-2 {
-            left: 50%;
-            animation-delay: 1s;
-        }
-
-        .leaf-3 {
-            right: 10%;
-            animation-delay: 2s;
-        }
     </style>
+</head>
+<body>
+    {% include "background.njk" %}
+    {% include "nav.njk" %}
+
+    <main>
+        <div class="container">
+            {{ content | safe }}
+        </div>
+    </main>
+
+    {% include "footer.njk" %}
 </body>
 </html> 

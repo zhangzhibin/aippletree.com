@@ -22,6 +22,10 @@ module.exports = function(eleventyConfig) {
     });
   });
 
+  eleventyConfig.addFilter("dateISO", function(date) {
+    return new Date(date).toISOString();
+  });
+
   // Add markdown-it plugin for better markdown support
   const markdownIt = require("markdown-it");
   const markdownItOptions = {

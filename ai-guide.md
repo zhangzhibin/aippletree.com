@@ -35,3 +35,7 @@ chat 使用中文
 - 项目列表：src/projects/index.md
 - 项目: src/project/[slug]/index.md
 - 其他: src/
+
+## 页面占位符
+
+演示的用的数据用 placehold.co 的占位符
