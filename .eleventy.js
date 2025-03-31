@@ -13,6 +13,10 @@ module.exports = function(eleventyConfig) {
     return collection.getFilteredByGlob("src/projects/**/*.md");
   });
 
+  eleventyConfig.addCollection("featured_projects", function(collection) {
+    return collection.getFilteredByGlob("src/projects/**/*.md").filter(item => item.data.featured);
+  });
+
   // Add date formatting filter
   eleventyConfig.addFilter("dateFormat", function(date) {
     return new Date(date).toLocaleDateString("en-US", {
@@ -24,6 +28,11 @@ module.exports = function(eleventyConfig) {
 
   eleventyConfig.addFilter("dateISO", function(date) {
     return new Date(date).toISOString();
+  });
+
+  // Add limit filter
+  eleventyConfig.addFilter("limit", function(array, limit) {
+    return array.slice(0, limit);
   });
 
   // Add markdown-it plugin for better markdown support

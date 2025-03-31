@@ -1,0 +1,70 @@
+<section id="projects" class="section">
+    <div class="container">
+        <h2 class="section-title">{{ section.title | default('Featured Projects') }}</h2>
+        <div class="project-grid">
+            {% for project in collections.featured_projects | reverse | limit(section.limit | default(6)) %}
+            {% include "project-card.njk" %}
+            {% endfor %}
+        </div>
+        {% if section.viewAll %}
+        <div class="section-footer">
+            <a href="{{ section.viewAll.url | default('/projects') }}" class="view-all">
+                {{ section.viewAll.text | default('View All Projects →') }}
+            </a>
+        </div>
+        {% endif %}
+    </div>
+</section>
+
+<style>
+    .section {
+        padding: 3rem 0;
+    }
+
+    .section-title {
+        text-align: center;
+        margin-bottom: 2rem;
+        font-size: 2rem;
+    }
+
+    .project-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 1.5rem;
+        margin-bottom: 2rem;
+    }
+
+    .section-footer {
+        text-align: center;
+    }
+
+    .view-all {
+        display: inline-block;
+        padding: 0.75rem 1.5rem;
+        color: var(--primary-color);
+        text-decoration: none;
+        font-weight: 500;
+        transition: transform 0.2s ease;
+    }
+
+    .view-all:hover {
+        transform: translateX(5px);
+        text-decoration: none;
+    }
+
+    @media (max-width: 768px) {
+        .section {
+            padding: 2rem 0;
+        }
+
+        .section-title {
+            font-size: 1.75rem;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .project-grid {
+            grid-template-columns: 1fr;
+        }
+    }
+</style> 
