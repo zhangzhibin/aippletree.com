@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title }} - AippleTree Blog</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="background-decoration">
+        <div class="cloud cloud-1"></div>
+        <div class="cloud cloud-2"></div>
+        <div class="cloud cloud-3"></div>
+    </div>
+    
+    <header>
+        <nav>
+            <a href="/" class="nav-link">Home</a>
+            <a href="/projects" class="nav-link">Projects</a>
+            <a href="/blog" class="nav-link">Blog</a>
+        </nav>
+    </header>
+
+    <main>
+        <div class="content-wrapper post-detail">
+            <article>
+                <header class="post-header">
+                    <h1>{{ title }}</h1>
+                    <div class="post-meta">
+                        <time datetime="{{ page.date | dateFormat }}">{{ page.date | dateFormat }}</time>
+                        <div class="post-tags">
+                            {% for tag in tags %}
+                                <a href="/blog/tag/{{ tag }}" class="tag">{{ tag }}</a>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </header>
+
+                <div class="post-content">
+                    {{ content | safe }}
+                </div>
+
+                <footer class="post-footer">
+                    <div class="post-navigation">
+                        {% if prevPost %}
+                        <a href="{{ prevPost.url }}" class="nav-link prev">
+                            ← {{ prevPost.data.title }}
+                        </a>
+                        {% endif %}
+                        {% if nextPost %}
+                        <a href="{{ nextPost.url }}" class="nav-link next">
+                            {{ nextPost.data.title }} →
+                        </a>
+                        {% endif %}
+                    </div>
+
+                    <div class="post-share">
+                        <h3>Share this post</h3>
+                        <div class="share-buttons">
+                            <a href="https://twitter.com/intent/tweet?text={{ title | urlencode }}&url={{ page.url | urlencode }}" target="_blank" class="share-button twitter">Twitter</a>
+                            <a href="https://www.linkedin.com/shareArticle?mini=true&url={{ page.url | urlencode }}&title={{ title | urlencode }}" target="_blank" class="share-button linkedin">LinkedIn</a>
+                        </div>
+                    </div>
+                </footer>
+            </article>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <p>&copy; {{ page.date.getFullYear() }} AippleTree. All rights reserved.</p>
+            <div class="footer-decoration">
+                <span class="leaf leaf-1">🍃</span>
+                <span class="leaf leaf-2">🍃</span>
+                <span class="leaf leaf-3">🍃</span>
+            </div>
+        </div>
+    </footer>
+
+    <style>
+        .post-detail {
+            max-width: 800px;
+        }
+
+        .post-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .post-meta {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 1rem;
+            color: var(--text-color);
+            opacity: 0.8;
+        }
+
+        .post-tags {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .tag {
+            background: var(--primary-color);
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.875rem;
+            text-decoration: none;
+        }
+
+        .post-content {
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        .post-content h2 {
+            margin-top: 2rem;
+            color: var(--primary-color);
+        }
+
+        .post-content code {
+            background: var(--background-color);
+            padding: 0.2rem 0.4rem;
+            border-radius: 4px;
+            font-family: monospace;
+        }
+
+        .post-content pre {
+            background: var(--background-color);
+            padding: 1rem;
+            border-radius: var(--border-radius);
+            overflow-x: auto;
+        }
+
+        .post-footer {
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--shadow-color);
+        }
+
+        .post-navigation {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 2rem;
+        }
+
+        .post-share {
+            text-align: center;
+        }
+
+        .share-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .share-button {
+            padding: 0.5rem 1rem;
+            border-radius: var(--border-radius);
+            text-decoration: none;
+            color: white;
+            transition: all 0.3s ease;
+        }
+
+        .share-button.twitter {
+            background: #1DA1F2;
+        }
+
+        .share-button.linkedin {
+            background: #0077B5;
+        }
+
+        .share-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px var(--shadow-color);
+        }
+    </style>
+</body>
+</html> 

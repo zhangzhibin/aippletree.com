@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title }} - AippleTree</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="background-decoration">
+        <div class="cloud cloud-1"></div>
+        <div class="cloud cloud-2"></div>
+        <div class="cloud cloud-3"></div>
+    </div>
+    
+    <header>
+        <nav>
+            <a href="/" class="nav-link">Home</a>
+            <a href="/projects" class="nav-link">Projects</a>
+            <a href="/blog" class="nav-link">Blog</a>
+        </nav>
+    </header>
+
+    <main>
+        <div class="content-wrapper page-content">
+            <article>
+                <header class="page-header">
+                    <h1>{{ title }}</h1>
+                    {% if description %}
+                    <p class="page-description">{{ description }}</p>
+                    {% endif %}
+                </header>
+
+                <div class="page-body">
+                    {{ content | safe }}
+                </div>
+            </article>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <p>&copy; {{ page.date.getFullYear() }} AippleTree. All rights reserved.</p>
+            <div class="footer-decoration">
+                <span class="leaf leaf-1">🍃</span>
+                <span class="leaf leaf-2">🍃</span>
+                <span class="leaf leaf-3">🍃</span>
+            </div>
+        </div>
+    </footer>
+
+    <style>
+        .page-content {
+            max-width: 800px;
+        }
+
+        .page-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .page-description {
+            color: var(--text-color);
+            opacity: 0.8;
+            font-size: 1.1rem;
+            margin-top: 1rem;
+        }
+
+        .page-body {
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        .page-body h2 {
+            margin-top: 2rem;
+            color: var(--primary-color);
+        }
+
+        .page-body p {
+            margin-bottom: 1.5rem;
+        }
+
+        .page-body ul, .page-body ol {
+            margin-bottom: 1.5rem;
+            padding-left: 1.5rem;
+        }
+
+        .page-body li {
+            margin-bottom: 0.5rem;
+        }
+
+        .page-body a {
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .page-body a:hover {
+            color: var(--accent-color);
+        }
+
+        .page-body blockquote {
+            border-left: 4px solid var(--primary-color);
+            margin: 1.5rem 0;
+            padding: 1rem;
+            background: var(--background-color);
+            border-radius: 0 var(--border-radius) var(--border-radius) 0;
+        }
+
+        .page-body blockquote p {
+            margin: 0;
+        }
+    </style>
+</body>
+</html> 

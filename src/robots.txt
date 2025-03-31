@@ -1,0 +1,11 @@
+User-agent: *
+Allow: /
+Allow: /blog/
+Allow: /projects/
+Allow: /sitemap.xml
+Disallow: /_site/
+Disallow: /node_modules/
+Disallow: /.git/
+Disallow: /.github/
+
+Sitemap: https://aippletree.com/sitemap.xml 

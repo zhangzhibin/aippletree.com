@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title }} - AippleTree</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="background-decoration">
+        <div class="cloud cloud-1"></div>
+        <div class="cloud cloud-2"></div>
+        <div class="cloud cloud-3"></div>
+    </div>
+    
+    <header>
+        <nav>
+            <a href="/" class="nav-link">Home</a>
+            <a href="/projects" class="nav-link">Projects</a>
+            <a href="/blog" class="nav-link">Blog</a>
+        </nav>
+    </header>
+
+    <main>
+        <div class="content-wrapper project-detail">
+            <div class="project-header">
+                <h1>{{ title }}</h1>
+                <div class="project-meta">
+                    <span class="project-date">{{ page.date | dateFormat }}</span>
+                    <div class="project-tags">
+                        {% for tag in tags %}
+                            <span class="tag">{{ tag }}</span>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-content">
+                {{ content | safe }}
+            </div>
+
+            {% if techStack %}
+            <div class="tech-stack">
+                <h2>Tech Stack</h2>
+                <div class="tech-list">
+                    {% for tech in techStack %}
+                        <span class="tech-item">{{ tech }}</span>
+                    {% endfor %}
+                </div>
+            </div>
+            {% endif %}
+
+            {% if demoUrl or githubUrl %}
+            <div class="project-links">
+                {% if demoUrl %}
+                <a href="{{ demoUrl }}" class="button button-primary" target="_blank">Live Demo</a>
+                {% endif %}
+                {% if githubUrl %}
+                <a href="{{ githubUrl }}" class="button button-secondary" target="_blank">GitHub</a>
+                {% endif %}
+            </div>
+            {% endif %}
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <p>&copy; {{ page.date.getFullYear() }} AippleTree. All rights reserved.</p>
+            <div class="footer-decoration">
+                <span class="leaf leaf-1">🍃</span>
+                <span class="leaf leaf-2">🍃</span>
+                <span class="leaf leaf-3">🍃</span>
+            </div>
+        </div>
+    </footer>
+
+    <style>
+        .project-detail {
+            max-width: 900px;
+        }
+
+        .project-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .project-meta {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 1rem;
+            color: var(--text-color);
+            opacity: 0.8;
+        }
+
+        .project-tags {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .tag {
+            background: var(--primary-color);
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.875rem;
+        }
+
+        .tech-stack {
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--shadow-color);
+        }
+
+        .tech-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .tech-item {
+            background: var(--background-color);
+            padding: 0.5rem 1rem;
+            border-radius: var(--border-radius);
+            font-size: 0.875rem;
+        }
+
+        .project-links {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .button {
+            display: inline-block;
+            padding: 0.75rem 1.5rem;
+            border-radius: var(--border-radius);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .button-primary {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        .button-secondary {
+            background: var(--secondary-color);
+            color: white;
+        }
+
+        .button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px var(--shadow-color);
+        }
+    </style>
+</body>
+</html> 
