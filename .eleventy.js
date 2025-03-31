@@ -55,7 +55,6 @@ module.exports = function(eleventyConfig) {
     markdownTemplateEngine: "njk",
     htmlTemplateEngine: "njk",
     dataTemplateEngine: "njk",
-    passthroughFileCopy: true,
-    pathPrefix: process.env.NODE_ENV === "production" ? "/aippletree.com" : ""
+    passthroughFileCopy: true
   };
 }; 
