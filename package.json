@@ -1,17 +1,22 @@
 {
   "name": "aippletree",
   "version": "1.0.0",
-  "description": "个人项目展示与博客网站",
+  "description": "AippleTree's personal portfolio website",
   "main": "index.js",
   "scripts": {
-    "start": "eleventy --serve & npx tailwindcss -i ./src/css/style.css -o ./_site/css/style.css --watch",
-    "build": "eleventy",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "eleventy --serve & npx tailwindcss -i ./src/css/tailwind.css -o ./_site/css/tailwind.css --watch",
+    "build": "NODE_ENV=production eleventy",
+    "dev": "eleventy --serve"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "devDependencies": {
-    "@11ty/eleventy": "^2.0.1"
+  "keywords": [
+    "11ty",
+    "portfolio",
+    "blog"
+  ],
+  "author": "AippleTree",
+  "license": "MIT",
+  "dependencies": {
+    "@11ty/eleventy": "^3.0.0",
+    "markdown-it": "^13.0.2"
   }
 }
