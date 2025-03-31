@@ -6,16 +6,10 @@ module.exports = function(eleventyConfig) {
 
   // Add collections for blog posts and projects
   eleventyConfig.addCollection("blog", function(collection) {
-    const posts = collection.getFilteredByGlob([
+    return collection.getFilteredByGlob([
       "src/blog/**/*.md",
       "!src/blog/index.md"
     ]);
-    console.log('Blog Posts:', posts.map(p => ({
-      title: p.data.title,
-      date: p.date,
-      url: p.url
-    })));
-    return posts;
   });
 
   eleventyConfig.addCollection("projects", function(collection) {
@@ -23,14 +17,8 @@ module.exports = function(eleventyConfig) {
   });
 
   eleventyConfig.addCollection("featured_projects", function(collection) {
-    const projects = collection.getFilteredByGlob("src/projects/**/*.md")
+    return collection.getFilteredByGlob("src/projects/**/*.md")
       .filter(item => item.data.featured);
-    console.log('Featured Projects:', projects.map(p => ({
-      title: p.data.title,
-      featured: p.data.featured,
-      url: p.url
-    })));
-    return projects;
   });
 
   // Add debug filter
