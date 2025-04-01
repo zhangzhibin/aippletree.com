@@ -20,7 +20,7 @@ banner:
     text: Submit via GitHub
 projects:
   title: Featured Projects
-  limit: 6
+  limit: 10
   viewAll:
     url: /projects
     text: View All Projects →

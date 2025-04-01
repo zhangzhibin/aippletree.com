@@ -1,0 +1,169 @@
+# Data Models Documentation
+
+This document describes the data models and frontmatter properties supported by different pages and components in the AippleTree website.
+
+## Common Properties
+
+All pages support these basic frontmatter properties:
+
+```yaml
+---
+layout: <layout-name> # Required: The layout template to use
+title: <string> # Required: Page title
+date: <YYYY-MM-DD> # Required: Publication date
+description: <string> # Optional: Page description for SEO
+---
+```
+
+## Blog Posts
+
+Blog posts are stored in `src/blog/[slug]/index.md` with the following frontmatter:
+
+```yaml
+---
+layout: post.njk
+title: <string> # Required: Post title
+date: <YYYY-MM-DD> # Required: Publication date
+description: <string> # Required: Post description for SEO
+tags: [<string>] # Optional: Array of tags
+featured: <boolean> # Optional: Whether to feature the post
+readingTime: <number> # Optional: Estimated reading time in minutes
+thumbnail: <string> # Optional: URL to post thumbnail image
+author: # Optional: Author information
+  name: <string>
+  avatar: <string>
+  bio: <string>
+---
+```
+
+## Projects
+
+Project pages are stored in `src/projects/[slug]/index.md` with the following frontmatter:
+
+```yaml
+---
+layout: project.njk
+title: <string> # Required: Project title
+date: <YYYY-MM-DD> # Required: Publication date
+description: <string> # Required: Project description
+tags: [<string>] # Optional: Array of tags
+techStack: [<string>] # Optional: Array of technologies used
+demoUrl: <string> # Optional: URL to live demo
+githubUrl: <string> # Optional: URL to GitHub repository
+featured: <boolean> # Optional: Whether to feature the project
+background_color: <string> # Optional: Hex color code for project card
+thumbnail: <string> # Optional: URL to project thumbnail image
+---
+```
+
+## Homepage
+
+The homepage (`src/index.md`) supports the following frontmatter:
+
+```yaml
+---
+layout: base.njk
+title: <string> # Required: Site title
+date: <YYYY-MM-DD> # Required: Last update date
+changefreq: <string> # Optional: How often the page changes
+priority: <number> # Optional: SEO priority (0.0 to 1.0)
+hero: # Optional: Hero section configuration
+  title: <string>
+  subtitle: <string>
+  primaryButton:
+    url: <string>
+    text: <string>
+  secondaryButton:
+    url: <string>
+    text: <string>
+banner: # Optional: Top banner configuration
+  text: <string>
+  button:
+    url: <string>
+    text: <string>
+projects: # Optional: Projects section configuration
+  title: <string>
+  limit: <number>
+  viewAll:
+    url: <string>
+    text: <string>
+articles: # Optional: Articles section configuration
+  title: <string>
+  limit: <number>
+  viewAll:
+    url: <string>
+    text: <string>
+about: # Optional: About section configuration
+  title: <string>
+  content: <string>
+---
+```
+
+## Blog Index Page
+
+The blog index page (`src/blog/index.md`) supports:
+
+```yaml
+---
+layout: blog.njk
+title: <string> # Required: Page title
+date: <YYYY-MM-DD> # Required: Last update date
+eleventyExcludeFromCollections: true # Required: Exclude from blog collection
+---
+```
+
+## Projects Index Page
+
+The projects index page (`src/projects/index.md`) supports:
+
+```yaml
+---
+layout: projects.njk
+title: <string> # Required: Page title
+date: <YYYY-MM-DD> # Required: Last update date
+description: <string> # Required: Page description
+eleventyExcludeFromCollections: true # Required: Exclude from projects collection
+---
+```
+
+## Collections
+
+The site defines the following collections in `.eleventy.js`:
+
+1. `blog`: All blog posts
+
+   - Excludes `src/blog/index.md`
+   - Sorted by date (newest first)
+
+2. `projects`: All project pages
+
+   - Excludes `src/projects/index.md`
+   - Sorted by date (newest first)
+
+3. `featured_projects`: Featured project pages
+   - Filtered from projects collection
+   - Only includes projects with `featured: true`
+
+## Global Data
+
+Global data is stored in `src/_data/`:
+
+1. `site.json`: Site-wide configuration
+
+   - Site title
+   - Site description
+   - Social media links
+   - Contact information
+
+2. `navigation.json`: Navigation menu structure
+   - Main menu items
+   - Footer links
+
+## Notes
+
+1. All dates should be in `YYYY-MM-DD` format
+2. URLs should be relative to the site root (starting with `/`)
+3. Image URLs can be relative or absolute
+4. Boolean values can be `true` or `false`
+5. Arrays should use YAML array syntax `[item1, item2]`
+6. Nested objects should be properly indented in YAML
