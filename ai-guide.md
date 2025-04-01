@@ -14,6 +14,7 @@ chat 使用中文
 
 - 不使用 tailwind
 - 吉卜力风格
+- 模板和 css 分开, 模板不包含 css
 - 集中存放在 /src/css 目录中
   - main.css: 全局样式、变量、基础样式
   - components.css: 组件样式（如卡片、按钮等）

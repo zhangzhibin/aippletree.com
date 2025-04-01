@@ -6,10 +6,7 @@ module.exports = function(eleventyConfig) {
 
   // Add collections for blog posts and projects
   eleventyConfig.addCollection("blog", function(collection) {
-    return collection.getFilteredByGlob([
-      "src/blog/**/*.md",
-      "!src/blog/index.md"
-    ]);
+    return collection.getFilteredByGlob("src/blog/**/*.md");
   });
 
   eleventyConfig.addCollection("projects", function(collection) {

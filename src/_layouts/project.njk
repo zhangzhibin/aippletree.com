@@ -2,36 +2,48 @@
 layout: base.njk
 ---
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title }}</title>
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/layouts.css">
+    <link rel="stylesheet" href="/css/components.css">
+</head>
+
 <article class="project">
     <header class="project-header">
-        <h1 class="project-title">{{ title }}</h1>
-        {% if description %}
-        <p class="project-description">{{ description }}</p>
-        {% endif %}
-        {% if tags %}
-        <div class="project-tags">
-            {% for tag in tags %}
-            <span class="project-tag">{{ tag }}</span>
-            {% endfor %}
+        <div class="project-header-content">
+            <h1 class="project-title">{{ title }}</h1>
+            {% if description %}
+            <p class="project-description">{{ description }}</p>
+            {% endif %}
+            {% if tags %}
+            <div class="project-tags">
+                {% for tag in tags %}
+                <span class="project-tag">{{ tag }}</span>
+                {% endfor %}
+            </div>
+            {% endif %}
+            {% if demo_url or github_url %}
+            <div class="project-links">
+                {% if demo_url %}
+                <a href="{{ demo_url }}" class="project-link demo" target="_blank">View Demo</a>
+                {% endif %}
+                {% if github_url %}
+                <a href="{{ github_url }}" class="project-link github" target="_blank">View Source</a>
+                {% endif %}
+            </div>
+            {% endif %}
         </div>
-        {% endif %}
-        {% if demo_url or github_url %}
-        <div class="project-links">
-            {% if demo_url %}
-            <a href="{{ demo_url }}" class="project-link demo" target="_blank">View Demo</a>
-            {% endif %}
-            {% if github_url %}
-            <a href="{{ github_url }}" class="project-link github" target="_blank">View Source</a>
-            {% endif %}
+        {% if thumbnail %}
+        <div class="project-thumbnail">
+            <img src="{{ thumbnail }}" alt="{{ title }}">
         </div>
         {% endif %}
     </header>
-
-    {% if thumbnail %}
-    <div class="project-thumbnail">
-        <img src="{{ thumbnail }}" alt="{{ title }}">
-    </div>
-    {% endif %}
 
     <div class="project-content">
         {{ content | safe }}
@@ -58,165 +70,4 @@ layout: base.njk
         </ul>
     </section>
     {% endif %}
-</article>
-
-<style>
-    .project {
-        max-width: 800px;
-        margin: 0 auto;
-    }
-
-    .project-header {
-        margin-bottom: 2rem;
-        text-align: center;
-    }
-
-    .project-title {
-        font-size: 2.5rem;
-        color: var(--text-color);
-        margin-bottom: 1rem;
-    }
-
-    .project-description {
-        font-size: 1.1rem;
-        color: #666;
-        line-height: 1.6;
-        margin-bottom: 1.5rem;
-    }
-
-    .project-tags {
-        display: flex;
-        gap: 0.5rem;
-        flex-wrap: wrap;
-        justify-content: center;
-        margin-bottom: 1.5rem;
-    }
-
-    .project-tag {
-        background: var(--primary-color);
-        color: white;
-        padding: 0.25rem 0.75rem;
-        border-radius: 1rem;
-        font-size: 0.85rem;
-    }
-
-    .project-links {
-        display: flex;
-        gap: 1rem;
-        justify-content: center;
-    }
-
-    .project-link {
-        display: inline-flex;
-        align-items: center;
-        padding: 0.5rem 1.25rem;
-        border-radius: var(--border-radius);
-        font-weight: 500;
-        transition: transform 0.2s ease, box-shadow 0.2s ease;
-    }
-
-    .project-link:hover {
-        transform: translateY(-2px);
-        text-decoration: none;
-    }
-
-    .project-link.demo {
-        background: var(--primary-color);
-        color: white;
-    }
-
-    .project-link.github {
-        background: #24292e;
-        color: white;
-    }
-
-    .project-thumbnail {
-        margin: 2rem 0;
-        border-radius: var(--border-radius);
-        overflow: hidden;
-        box-shadow: 0 4px 12px var(--shadow-color);
-    }
-
-    .project-thumbnail img {
-        width: 100%;
-        height: auto;
-        display: block;
-    }
-
-    .project-content {
-        font-size: 1.1rem;
-        line-height: 1.8;
-    }
-
-    .project-content h2 {
-        margin-top: 2rem;
-        margin-bottom: 1rem;
-        font-size: 1.8rem;
-    }
-
-    .project-content h3 {
-        margin-top: 1.5rem;
-        margin-bottom: 0.75rem;
-        font-size: 1.5rem;
-    }
-
-    .project-content p {
-        margin-bottom: 1.5rem;
-    }
-
-    .project-features, .project-tech {
-        margin-top: 3rem;
-    }
-
-    .features-list, .tech-list {
-        list-style: none;
-        padding: 0;
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-        gap: 1rem;
-    }
-
-    .feature-item, .tech-item {
-        background: var(--background-color);
-        padding: 1rem;
-        border-radius: var(--border-radius);
-        box-shadow: 0 2px 4px var(--shadow-color);
-    }
-
-    @media (max-width: 768px) {
-        .project-title {
-            font-size: 2rem;
-        }
-
-        .project-content {
-            font-size: 1rem;
-        }
-
-        .project-thumbnail {
-            margin: 1.5rem 0;
-        }
-    }
-
-    @media (max-width: 480px) {
-        .project-header {
-            margin-bottom: 1.5rem;
-        }
-
-        .project-title {
-            font-size: 1.75rem;
-        }
-
-        .project-description {
-            font-size: 1rem;
-        }
-
-        .project-links {
-            flex-direction: column;
-        }
-
-        .project-link {
-            width: 100%;
-            justify-content: center;
-        }
-    }
-</style> 
+</article> 

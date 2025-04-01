@@ -1,0 +1,37 @@
+---
+layout: base.njk
+---
+
+<div class="blog-page">
+    <header class="page-header">
+        <h1 class="page-title">{{ title }}</h1>
+        <p class="page-description">Read the latest articles about web development, programming, and technology.</p>
+    </header>
+
+    <div class="blog-grid">
+        {% for post in collections.blog | reverse %}
+        <article class="blog-card">
+            {% if post.data.thumbnail %}
+            <div class="blog-card-image">
+                <img src="{{ post.data.thumbnail }}" alt="{{ post.data.title }}">
+            </div>
+            {% endif %}
+            <div class="blog-card-content">
+                <h2 class="blog-card-title">
+                    <a href="{{ post.url }}">{{ post.data.title }}</a>
+                </h2>
+                {% if post.data.description %}
+                <p class="blog-card-description">{{ post.data.description }}</p>
+                {% endif %}
+                <div class="blog-card-meta">
+                    {% set date = post.data.date %}
+                    {% set readingTime = post.data.readingTime %}
+                    {% set tags = post.data.tags %}
+                    {% include "components/post-meta.njk" %}
+                    {% include "components/post-tags.njk" %}
+                </div>
+            </div>
+        </article>
+        {% endfor %}
+    </div>
+</div> 

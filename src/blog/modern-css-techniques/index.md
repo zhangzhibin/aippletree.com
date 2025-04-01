@@ -1,4 +1,5 @@
 ---
+layout: post.njk
 title: Modern CSS Techniques for Better Web Design
 description: Explore modern CSS techniques including Grid, Flexbox, Custom Properties, and more for creating responsive and maintainable websites.
 date: 2024-03-20

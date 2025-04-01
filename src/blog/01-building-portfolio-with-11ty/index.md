@@ -4,7 +4,9 @@ title: Building a Modern Portfolio with 11ty
 date: 2024-03-21
 tags: ["Web Development", "11ty", "Tutorial"]
 description: Learn how to create a beautiful and performant portfolio website using 11ty, modern CSS, and best practices for static site generation.
-slug: "how-to-build-portfolio-with-11ty"
+slug: building-portfolio-with-11ty
+readingTime: 8
+featured: true
 ---
 
 ## Introduction

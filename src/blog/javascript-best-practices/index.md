@@ -1,4 +1,5 @@
 ---
+layout: post.njk
 title: JavaScript Best Practices in 2024
 description: Essential JavaScript best practices and patterns for writing clean, maintainable, and efficient code in 2024.
 date: 2024-03-19

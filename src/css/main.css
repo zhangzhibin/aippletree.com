@@ -5,8 +5,11 @@
     --secondary-color: #F5A623;  /* 温暖橙 */
     --background-color: #F8F9FA;  /* 米白色背景 */
     --text-color: #2C3E50;  /* 深灰文字 */
+    --text-secondary: #666;  /* 次要文字颜色 */
     --accent-color: #7ED321;  /* 自然绿 */
     --shadow-color: rgba(0, 0, 0, 0.1);
+    --card-bg: white;  /* 卡片背景色 */
+    --card-shadow: 0 4px 12px var(--shadow-color);  /* 卡片阴影 */
     --border-radius: 12px;
     --font-family: 'Quicksand', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
     --container-width: 1200px;

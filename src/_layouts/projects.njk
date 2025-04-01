@@ -1,0 +1,56 @@
+---
+layout: base.njk
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title }}</title>
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/layouts.css">
+    <link rel="stylesheet" href="/css/components.css">
+</head>
+
+<div class="projects-page">
+    <header class="page-header">
+        <h1 class="page-title">{{ title }}</h1>
+        <p class="page-description">Discover amazing projects and learn from experienced developers.</p>
+    </header>
+
+    {% include "submit-banner.njk" %}
+
+    <div class="projects-grid">
+        {% for project in collections.projects %}
+        <article class="project-card">
+            {% if project.data.thumbnail %}
+            <div class="project-card-image">
+                <img src="{{ project.data.thumbnail }}" alt="{{ project.data.title }}">
+            </div>
+            {% endif %}
+            <div class="project-card-content">
+                <h2 class="project-card-title">
+                    <a href="{{ project.url }}">{{ project.data.title }}</a>
+                </h2>
+                {% if project.data.description %}
+                <p class="project-card-description">{{ project.data.description }}</p>
+                {% endif %}
+                {% if project.data.techStack %}
+                <div class="project-card-tech">
+                    {% for tech in project.data.techStack %}
+                    <span class="tech-tag">{{ tech }}</span>
+                    {% endfor %}
+                </div>
+                {% endif %}
+                <div class="project-card-meta">
+                    <span class="project-date">{{ project.data.date | formatDate }}</span>
+                    {% if project.data.demo_url %}
+                    <a href="{{ project.data.demo_url }}" class="project-link demo" target="_blank">View Demo</a>
+                    {% endif %}
+                </div>
+            </div>
+        </article>
+        {% endfor %}
+    </div>
+</div> 
