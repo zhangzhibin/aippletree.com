@@ -66,41 +66,20 @@ aippletree.com/
 │   ├── projects/       # Project pages
 │   ├── images/         # Image assets
 │   └── css/           # Stylesheets
+├── docs/              # Documentation
 ├── .eleventy.js       # 11ty configuration
 └── package.json
 ```
 
 ## Content Management
 
-### Blog Posts
+For detailed information about content structure and frontmatter properties, please refer to the [Data Models Documentation](docs/data-models.md).
 
-Blog posts are stored in `src/blog/[slug]/index.md` with the following frontmatter:
+### Quick Start
 
-```yaml
----
-layout: post.njk
-title: Post Title
-date: YYYY-MM-DD
-tags: ["Tag1", "Tag2"]
-description: Post description
----
-```
-
-### Projects
-
-Project pages are stored in `src/projects/[slug]/index.md` with the following frontmatter:
-
-```yaml
----
-layout: project.njk
-title: Project Title
-date: YYYY-MM-DD
-tags: ["Tag1", "Tag2"]
-techStack: ["Tech1", "Tech2"]
-demoUrl: "https://example.com"
-githubUrl: "https://github.com/username/repo"
----
-```
+1. **Blog Posts**: Create a new directory in `src/blog/[slug]/` and add an `index.md` file
+2. **Projects**: Create a new directory in `src/projects/[slug]/` and add an `index.md` file
+3. **Pages**: Add new `.md` files directly in the `src/` directory
 
 ## Customization
 
@@ -127,13 +106,6 @@ The site includes several layouts:
 - `post.njk`: Layout for blog posts
 - `project.njk`: Layout for project pages
 - `page.njk`: Layout for standard pages
-
-## Deployment
-
-The site is configured for deployment on GitHub Pages. To deploy:
-
-1. Push your changes to the main branch
-2. GitHub Actions will automatically build and deploy the site
 
 ## Contributing
 
