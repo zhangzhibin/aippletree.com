@@ -1,0 +1,24 @@
+{% if metadata %}
+<div class="site-info">
+    <!-- 使用 site.js 的数据 -->
+    <h1>{{ site.name }}</h1>
+    <p>{{ site.description }}</p>
+
+    <!-- 使用 metadata.js 的数据 -->
+    <div class="build-info">
+        <p>Version: {{ metadata.version }}</p>
+        <p>Environment: {{ metadata.environment }}</p>
+        <p>Built at: {{ metadata.buildTime }}</p>
+    </div>
+
+    <!-- 使用条件判断 -->
+    {% if site.author %}
+    <div class="author-info">
+        <p>Created by: {{ site.author.name }}</p>
+        {% if site.author.github %}
+        <a href="{{ site.author.github }}">GitHub Profile</a>
+        {% endif %}
+    </div>
+    {% endif %}
+</div>
+{% endif %} 

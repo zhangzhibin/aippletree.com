@@ -12,13 +12,13 @@
     {% endif %}
     {% if post.data.ai_metadata %}
     {% set ai_metadata = post.data.ai_metadata %}
-    {% include "components/ai-metadata.njk" %}
+    {% include "components/ui/ai-metadata.njk" %}
     {% endif %}
     <div class="blog-card-meta">
         {% set date = post.data.date %}
         {% set readingTime = post.data.readingTime %}
         {% set tags = post.data.tags %}
-        {% include "components/post-meta.njk" %}
-        {% include "components/post-tags.njk" %}
+        {% include "components/ui/post-meta.njk" %}
+        {% include "components/ui/post-tags.njk" %}
     </div>
 </div> 

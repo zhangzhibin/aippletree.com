@@ -1,5 +1,16 @@
 ---
 layout: base.njk
+templateClass: template-project
+bodyClass: page-project
+seo:
+  changefreq: weekly
+  priority: 0.7
+  robots: index, follow
+components:
+  header:
+    sticky: true
+  footer:
+    showNewsletter: true
 ---
 
 <!DOCTYPE html>
@@ -14,60 +25,12 @@ layout: base.njk
 </head>
 
 <article class="project">
-    <header class="project-header">
-        <div class="project-header-content">
-            <h1 class="project-title">{{ title }}</h1>
-            {% if description %}
-            <p class="project-description">{{ description }}</p>
-            {% endif %}
-            {% if tags %}
-            <div class="project-tags">
-                {% for tag in tags %}
-                <span class="project-tag">{{ tag }}</span>
-                {% endfor %}
-            </div>
-            {% endif %}
-            {% if demo_url or github_url %}
-            <div class="project-links">
-                {% if demo_url %}
-                <a href="{{ demo_url }}" class="project-link demo" target="_blank">View Demo</a>
-                {% endif %}
-                {% if github_url %}
-                <a href="{{ github_url }}" class="project-link github" target="_blank">View Source</a>
-                {% endif %}
-            </div>
-            {% endif %}
-        </div>
-        {% if thumbnail %}
-        <div class="project-thumbnail">
-            <img src="{{ thumbnail }}" alt="{{ title }}">
-        </div>
-        {% endif %}
-    </header>
+    {% include "components/ui/project-header.njk" %}
 
     <div class="project-content">
         {{ content | safe }}
     </div>
 
-    {% if features %}
-    <section class="project-features">
-        <h2>Key Features</h2>
-        <ul class="features-list">
-            {% for feature in features %}
-            <li class="feature-item">{{ feature }}</li>
-            {% endfor %}
-        </ul>
-    </section>
-    {% endif %}
-
-    {% if tech_stack %}
-    <section class="project-tech">
-        <h2>Tech Stack</h2>
-        <ul class="tech-list">
-            {% for tech in tech_stack %}
-            <li class="tech-item">{{ tech }}</li>
-            {% endfor %}
-        </ul>
-    </section>
-    {% endif %}
+    {% include "components/ui/project-features.njk" %}
+    {% include "components/ui/project-tech.njk" %}
 </article> 

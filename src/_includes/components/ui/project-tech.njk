@@ -1,0 +1,10 @@
+{% if tech_stack %}
+<section class="project-tech">
+    <h2>Tech Stack</h2>
+    <ul class="tech-list">
+        {% for tech in tech_stack %}
+        <li class="tech-item">{{ tech }}</li>
+        {% endfor %}
+    </ul>
+</section>
+{% endif %} 

@@ -210,6 +210,49 @@
     line-height: 1.6;
 }
 
+/* Page Layout */
+.page {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.page-header {
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.page-title {
+    font-size: 2.5rem;
+    color: var(--text-color);
+    margin-bottom: 1rem;
+}
+
+.page-description {
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+}
+
+.page-content {
+    font-size: 1.1rem;
+}
+
+.page-content h2 {
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    font-size: 1.8rem;
+}
+
+.page-content h3 {
+    margin-top: 1.5rem;
+    margin-bottom: 0.75rem;
+    font-size: 1.5rem;
+}
+
+.page-content p {
+    margin-bottom: 1.5rem;
+}
+
 /* Responsive */
 @media (max-width: 1024px) {
     .nav-content,
@@ -294,6 +337,14 @@
     .page-description {
         font-size: 1.1rem;
     }
+
+    .page-title {
+        font-size: 2rem;
+    }
+
+    .page-content {
+        font-size: 1rem;
+    }
 }
 
 @media (max-width: 480px) {
@@ -317,5 +368,74 @@
 
     .page-description {
         font-size: 1rem;
+    }
+
+    .page-header {
+        margin-bottom: 1.5rem;
+    }
+
+    .page-title {
+        font-size: 1.75rem;
+    }
+
+    .page-description {
+        font-size: 1rem;
+    }
+}
+
+/* Home Layout */
+.home {
+    max-width: var(--container-width);
+    margin: 0 auto;
+    padding: 2rem var(--container-padding);
+}
+
+.home-header {
+    text-align: center;
+    margin-bottom: 4rem;
+}
+
+.home-description {
+    font-size: 1.2rem;
+    color: var(--text-secondary);
+    max-width: 800px;
+    margin: 1rem auto 0;
+    line-height: 1.6;
+}
+
+.section-title {
+    font-size: 2rem;
+    color: var(--text-color);
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.section-actions {
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.featured-projects,
+.latest-posts {
+    margin-bottom: 4rem;
+}
+
+@media (max-width: 768px) {
+    .home-header {
+        margin-bottom: 3rem;
+    }
+
+    .home-description {
+        font-size: 1.1rem;
+    }
+
+    .section-title {
+        font-size: 1.75rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .featured-projects,
+    .latest-posts {
+        margin-bottom: 3rem;
     }
 } 

@@ -1,0 +1,24 @@
+{% if site.contact %}
+<div class="contact-links">
+    {% if site.contact.email %}
+    <a href="mailto:{{ site.contact.email }}" class="contact-link email">
+        <span class="icon">✉️</span>
+        <span>Email</span>
+    </a>
+    {% endif %}
+
+    {% if site.contact.github %}
+    <a href="{{ site.contact.github }}" class="contact-link github" target="_blank" rel="noopener noreferrer">
+        <span class="icon">🐙</span>
+        <span>GitHub</span>
+    </a>
+    {% endif %}
+
+    {% if site.contact.twitter %}
+    <a href="{{ site.contact.twitter }}" class="contact-link twitter" target="_blank" rel="noopener noreferrer">
+        <span class="icon">🐦</span>
+        <span>Twitter</span>
+    </a>
+    {% endif %}
+</div>
+{% endif %} 

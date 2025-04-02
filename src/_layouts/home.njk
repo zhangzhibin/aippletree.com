@@ -1,0 +1,26 @@
+---
+layout: base.njk
+templateClass: template-home
+bodyClass: page-home
+seo:
+  changefreq: daily
+  priority: 1.0
+  robots: index, follow
+components:
+  header:
+    sticky: true
+    transparent: true
+  footer:
+    showNewsletter: true
+---
+
+<article class="home">
+    <header class="home-header">
+        {% include "components/ui/page-title.njk" %}
+        {% if description %}
+        <p class="home-description">{{ description }}</p>
+        {% endif %}
+    </header>
+
+    {{ content | safe }}
+</article> 

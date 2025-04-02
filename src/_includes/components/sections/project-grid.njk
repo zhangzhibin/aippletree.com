@@ -1,0 +1,17 @@
+<section id="{{ section.id }}" class="{{ section.class }}">
+  <div class="container">
+    <div class="section-header">
+      <h2>{{ section.title }}</h2>
+      {% if section.viewAll %}
+      <a href="{{ section.viewAll.url }}" class="view-all">{{ section.viewAll.text }}</a>
+      {% endif %}
+    </div>
+
+    <div class="project-grid">
+      {% set projects = collections.projects | reverse %}
+      {% for project in projects | limit(section.limit) %}
+        {% include "components/project-card.njk" %}
+      {% endfor %}
+    </div>
+  </div>
+</section> 

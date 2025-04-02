@@ -1,0 +1,22 @@
+{
+  "site": {
+    "name": "AIppleTree",
+    "description": "A platform for sharing interesting projects and insights about web development, software engineering, and technology. Join our community to discover amazing projects and learn from experienced developers.",
+    "github": "https://github.com/zhangzhibin/aippletree.com"
+  },
+  "components": {
+    "about": {
+      "id": "about",
+      "title": "About AIppleTree",
+      "class": "about-section",
+      "content": "AIppleTree is a platform for sharing interesting projects and insights about web development, software engineering, and technology. Join our community to discover amazing projects and learn from experienced developers."
+    },
+    "submitBanner": {
+      "text": "Have an interesting project or article to share?",
+      "button": {
+        "url": "https://github.com/zhangzhibin/aippletree.com/issues/new",
+        "text": "Submit via GitHub"
+      }
+    }
+  }
+} 
