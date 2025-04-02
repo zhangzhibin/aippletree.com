@@ -37,7 +37,7 @@ chat 使用中文
 - 博客列表：src/blog/index.md
 - 博客: src/blog/[slug]/index.md
 - 项目列表：src/projects/index.md
-- 项目: src/project/[slug]/index.md
+- 项目: src/projects/[slug]/index.md
 - 其他: src/
 
 ## 页面占位符
@@ -69,10 +69,10 @@ chat 使用中文
 
 全局组件和网站配置存在放在全局数据中 \_data
 
-- global
-- matadata
-- navigation
-- site
+- site: 网站基础配置（标题、描述、社交媒体链接等）
+- metadata: 网站元数据（SEO、统计等）
+- navigation: 导航菜单结构
+- global: 全局共享数据（如通用文本、配置等）
 
 ## 代码严谨
 

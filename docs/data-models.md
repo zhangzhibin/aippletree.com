@@ -162,14 +162,27 @@ Global data is stored in `src/_data/`:
 
 1. `site.json`: Site-wide configuration
 
-   - Site title
-   - Site description
+   - Site title and description
    - Social media links
    - Contact information
+   - Basic site settings
 
-2. `navigation.json`: Navigation menu structure
+2. `metadata.json`: Site metadata
+
+   - SEO settings
+   - Analytics configuration
+   - Site statistics
+
+3. `navigation.json`: Navigation menu structure
+
    - Main menu items
    - Footer links
+   - Mobile menu configuration
+
+4. `global.json`: Global shared data
+   - Common text strings
+   - Shared configurations
+   - Reusable content blocks
 
 ## Notes
 
