@@ -44,7 +44,8 @@ module.exports = function(eleventyConfig) {
     });
   });
 
-  eleventyConfig.addFilter("formatISO", function(date) {
+  // Add dateToISO filter
+  eleventyConfig.addFilter("dateToISO", function(date) {
     return new Date(date).toISOString();
   });
 

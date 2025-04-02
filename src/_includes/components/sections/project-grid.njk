@@ -10,7 +10,7 @@
     <div class="project-grid">
       {% set projects = collections.projects | reverse %}
       {% for project in projects | limit(section.limit) %}
-        {% include "components/project-card.njk" %}
+        {% include "components/ui/project-card.njk" %}
       {% endfor %}
     </div>
   </div>

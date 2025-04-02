@@ -37,9 +37,11 @@ sections:
       text: View All Articles →
 ---
 
-{% include "components/sections/hero.njk" with sections.hero %}
+{% set hero = sections.hero %}
+{% include "components/sections/hero.njk" %}
 
-{% include "components/ui/submit-banner.njk" with global.components.submitBanner %}
+{% set submitBanner = global.components.submitBanner %}
+{% include "components/ui/submit-banner.njk" %}
 
 {% set section = sections.featured_projects %}
 {% include "components/sections/project-grid.njk" %}

@@ -16,7 +16,8 @@ components:
 <article class="blog-page">
     <header class="blog-header">
         {% include "components/ui/page-title.njk" %}
-        {% include "components/ui/submit-banner.njk" with global.components.submitBanner %}
+        {% set submitBanner = global.components.submitBanner %}
+        {% include "components/ui/submit-banner.njk" %}
     </header>
 
     <section class="blog-grid">

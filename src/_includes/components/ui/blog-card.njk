@@ -1,11 +1,12 @@
+{% if post and post.data %}
 {% if post.data.thumbnail %}
 <div class="blog-card-image">
-    <img src="{{ post.data.thumbnail }}" alt="{{ post.data.title }}">
+    <img src="{{ post.data.thumbnail }}" alt="{{ post.data.title | default('Blog post image') }}">
 </div>
 {% endif %}
 <div class="blog-card-content">
     <h2 class="blog-card-title">
-        <a href="{{ post.url }}">{{ post.data.title }}</a>
+        <a href="{{ post.url | default('#') }}">{{ post.data.title | default('Untitled Post') }}</a>
     </h2>
     {% if post.data.description %}
     <p class="blog-card-description">{{ post.data.description }}</p>
@@ -15,10 +16,17 @@
     {% include "components/ui/ai-metadata.njk" %}
     {% endif %}
     <div class="blog-card-meta">
+        {% if post.data.date %}
         {% set date = post.data.date %}
+        {% endif %}
+        {% if post.data.readingTime %}
         {% set readingTime = post.data.readingTime %}
+        {% endif %}
+        {% if post.data.tags %}
         {% set tags = post.data.tags %}
+        {% endif %}
         {% include "components/ui/post-meta.njk" %}
         {% include "components/ui/post-tags.njk" %}
     </div>
-</div> 
+</div>
+{% endif %} 

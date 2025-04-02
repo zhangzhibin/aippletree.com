@@ -25,9 +25,11 @@ sections:
     viewAll: false
 ---
 
-{% include "components/sections/hero.njk" with sections.hero %}
+{% set hero = sections.hero %}
+{% include "components/sections/hero.njk" %}
 
-{% include "components/ui/submit-banner.njk" with global.components.submitBanner %}
+{% set submitBanner = global.components.submitBanner %}
+{% include "components/ui/submit-banner.njk" %}
 
 {% set section = sections.posts %}
 {% include "components/sections/blog-grid.njk" %}
