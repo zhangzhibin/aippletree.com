@@ -1,4 +1,5 @@
 ---
+eleventyExcludeFromCollections: true
 layout: blog.njk
 title: Blog - AippleTree
 description: Read our latest articles about web development, software engineering, and technology. Learn from experienced developers and stay updated with the latest trends.

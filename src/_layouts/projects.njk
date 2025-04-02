@@ -14,13 +14,15 @@ components:
 ---
 
 <article class="projects-page">
-    {% include "components/ui/page-title.njk" %}
-    {% set submitBanner = global.components.submitBanner %}
-    {% include "components/ui/submit-banner.njk" %}
+    <header class="projects-header">
+        {% include "components/ui/page-title.njk" %}
+        {% set submitBanner = global.components.submitBanner %}
+        {% include "components/ui/submit-banner.njk" %}
+    </header>
     
-    <div class="projects-grid">
-        {% for project in collections.projects %}
+    <section class="projects-grid">
+        {% for project in collections.projects | reverse %}
             {% include "components/ui/project-card.njk" %}
         {% endfor %}
-    </div>
+    </section>
 </article> 

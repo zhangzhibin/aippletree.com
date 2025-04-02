@@ -6,7 +6,6 @@
     </div>
     <div class="blog-grid">
       {%- for post in collections.blog | reverse | limit(section.limit) -%}
-        {%- set post = post.data -%}
         {%- include "components/ui/blog-card.njk" -%}
       {%- endfor -%}
     </div>

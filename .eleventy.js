@@ -6,37 +6,33 @@ module.exports = function(eleventyConfig) {
 
   // Add collections for blog posts and projects
   eleventyConfig.addCollection("blog", function(collection) {
-    const posts = collection.getFilteredByGlob("src/blog/**/*.md")
-      .sort((a, b) => b.date - a.date);
-    console.log("Blog posts:", posts.map(p => ({ title: p.data.title, date: p.data.date })));
+    const posts = collection.getFilteredByGlob("src/blog/**/*.md");
     return posts;
   });
 
   eleventyConfig.addCollection("projects", function(collection) {
-    return collection.getFilteredByGlob("src/projects/**/*.md")
-      .sort((a, b) => b.date - a.date);
+    return collection.getFilteredByGlob("src/projects/**/*.md");
   });
 
   eleventyConfig.addCollection("featured_projects", function(collection) {
     return collection.getFilteredByGlob("src/projects/**/*.md")
-      .filter(item => item.featured)
-      .sort((a, b) => b.date - a.date);
+      .filter(item => item.featured);
   });
 
-  // Add debug filter
-  eleventyConfig.addFilter("debug", function(value) {
-    // 只显示关键数据，避免循环引用
-    const safeValue = {
-      title: value.title,
-      description: value.description,
-      featured: value.featured,
-      background_color: value.background_color,
-      techStack: value.techStack,
-      date: value.date,
-      url: value.url
-    };
-    return `<pre style="font-size: 12px; padding: 10px; background: #f5f5f5; margin: 10px 0; white-space: pre-wrap;">${JSON.stringify(safeValue, null, 2)}</pre>`;
-  });
+  // // Add debug filter
+  // eleventyConfig.addFilter("debug", function(value) {
+  //   // 只显示关键数据，避免循环引用
+  //   const safeValue = {
+  //     title: value.title,
+  //     description: value.description,
+  //     featured: value.featured,
+  //     background_color: value.background_color,
+  //     techStack: value.techStack,
+  //     date: value.date,
+  //     url: value.url
+  //   };
+  //   return `<pre style="font-size: 12px; padding: 10px; background: #f5f5f5; margin: 10px 0; white-space: pre-wrap;">${JSON.stringify(safeValue, null, 2)}</pre>`;
+  // });
 
   // Add date formatting filters
   eleventyConfig.addFilter("dateToISO", function(date) {

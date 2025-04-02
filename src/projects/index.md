@@ -1,4 +1,5 @@
 ---
+eleventyExcludeFromCollections: true
 layout: projects.njk
 title: Projects - AippleTree
 description: Explore a collection of interesting projects showcasing web development, mobile apps, and open source contributions.

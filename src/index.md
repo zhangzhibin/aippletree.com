@@ -1,4 +1,5 @@
 ---
+eleventyExcludeFromCollections: true
 layout: home.njk
 title: AIppleTree - Project Showcase & Blog
 description: AIppleTree is a platform for sharing interesting projects and insights about web development, software engineering, and technology. Join our community to discover amazing projects and learn from experienced developers.
