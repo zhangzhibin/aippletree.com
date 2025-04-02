@@ -7,7 +7,7 @@ layout: base.njk
         <h1 class="page-title">{{ title }}</h1>
         <p class="page-description">Read the latest articles about web development, programming, and technology.</p>
     </header>
-
+    {% include "submit-banner.njk" %}
     <div class="blog-grid">
         {% for post in collections.blog | reverse %}
         <article class="blog-card">
