@@ -1,10 +1,17 @@
 <section class="hero">
-  <div class="container">
-    <h1>{{ title }}</h1>
-    <p class="subtitle">{{ subtitle }}</p>
-    <div class="buttons">
-      <a href="{{ primaryButton.url }}" class="button primary">{{ primaryButton.text }}</a>
-      <a href="{{ secondaryButton.url }}" class="button secondary">{{ secondaryButton.text }}</a>
+  <div class="hero-content">
+    <h1 class="hero-title">{{ hero.title }}</h1>
+    <p class="hero-subtitle">{{ hero.subtitle }}</p>
+    {% if hero.description %}
+    <p class="hero-description">{{ hero.description }}</p>
+    {% endif %}
+    <div class="hero-actions">
+      {% if hero.primaryButton %}
+      <a href="{{ hero.primaryButton.url }}" class="hero-button primary">{{ hero.primaryButton.text }}</a>
+      {% endif %}
+      {% if hero.secondaryButton %}
+      <a href="{{ hero.secondaryButton.url }}" class="hero-button secondary">{{ hero.secondaryButton.text }}</a>
+      {% endif %}
     </div>
   </div>
 </section> 

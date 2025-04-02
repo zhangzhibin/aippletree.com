@@ -15,12 +15,5 @@ components:
 ---
 
 <article class="home">
-    <header class="home-header">
-        {% include "components/ui/page-title.njk" %}
-        {% if description %}
-        <p class="home-description">{{ description }}</p>
-        {% endif %}
-    </header>
-
     {{ content | safe }}
 </article> 
