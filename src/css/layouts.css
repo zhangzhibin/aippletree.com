@@ -418,6 +418,46 @@
 .featured-projects,
 .latest-posts {
     margin-bottom: 4rem;
+    padding: 2rem 0;
+}
+
+.featured-projects .section-content,
+.latest-posts .section-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+.featured-projects .section-header,
+.latest-posts .section-header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.featured-projects .section-title,
+.latest-posts .section-title {
+    font-size: 2.5rem;
+    color: var(--text-color);
+    margin-bottom: 1rem;
+}
+
+.featured-projects .project-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+}
+
+.latest-posts .blog-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+}
+
+@media (max-width: 1200px) {
+    .featured-projects .project-grid,
+    .latest-posts .blog-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
 }
 
 @media (max-width: 768px) {
@@ -437,5 +477,16 @@
     .featured-projects,
     .latest-posts {
         margin-bottom: 3rem;
+        padding: 1.5rem 0;
+    }
+
+    .featured-projects .section-title,
+    .latest-posts .section-title {
+        font-size: 2rem;
+    }
+
+    .featured-projects .project-grid,
+    .latest-posts .blog-grid {
+        grid-template-columns: 1fr;
     }
 } 

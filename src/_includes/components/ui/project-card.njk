@@ -13,34 +13,34 @@
         <h3 class="project-card-title">
             <a href="{{ project.url }}" class="project-card-title-link">{{ project.data.title }}</a>
         </h3>
-        {% if project.data.description %}
+        {%- if project.data.description -%}
         <p class="project-card-description">{{ project.data.description }}</p>
-        {% endif %}
-        {% if project.data.techStack %}
+        {%- endif -%}
+        {%- if project.data.techStack -%}
         <div class="project-card-tech">
-            {% for tech in project.data.techStack %}
+            {%- for tech in project.data.techStack -%}
             <span class="tech-tag">{{ tech }}</span>
-            {% endfor %}
+            {%- endfor -%}
         </div>
-        {% endif %}
-        {% if project.data.tags %}
+        {%- endif -%}
+        {%- if project.data.tags -%}
         <div class="project-card-tags">
-            {% for tag in project.data.tags %}
+            {%- for tag in project.data.tags -%}
             <span class="tag">{{ tag }}</span>
-            {% endfor %}
+            {%- endfor -%}
         </div>
-        {% endif %}
+        {%- endif -%}
         {% if project.data.ai_metadata %}
         {% set ai_metadata = project.data.ai_metadata %}
         {% include "components/ui/ai-metadata.njk" %}
         {% endif %}
         <div class="project-card-actions">
-            {% if project.data.demoUrl %}
-            <a href="{{ project.data.demoUrl }}" class="project-card-button demo" target="_blank" rel="noopener noreferrer">View Demo</a>
-            {% endif %}
-            {% if project.data.githubUrl %}
-            <a href="{{ project.data.githubUrl }}" class="project-card-button github" target="_blank" rel="noopener noreferrer">GitHub</a>
-            {% endif %}
+            {%- if project.data.demo_url -%}
+            <a href="{{ project.data.demo_url }}" class="project-card-button demo" target="_blank" rel="noopener noreferrer">View Demo</a>
+            {%- endif -%}
+            {%- if project.data.github_url -%}
+            <a href="{{ project.data.github_url }}" class="project-card-button github" target="_blank" rel="noopener noreferrer">GitHub</a>
+            {%- endif -%}
             <a href="{{ project.url }}" class="project-card-button learn-more">Learn More</a>
         </div>
     </div>

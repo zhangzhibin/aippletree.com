@@ -1,17 +1,10 @@
+{%- if section -%}
 <section id="{{ section.id }}" class="{{ section.class }}">
   <div class="section-content">
     <div class="section-header">
-      <h2>{{ section.title }}</h2>
-      {% if section.viewAll %}
-      <a href="{{ section.viewAll.url }}" class="view-all">{{ section.viewAll.text }}</a>
-      {% endif %}
+      <h2>{{ section.title }}</h2>{%- if section.viewAll -%}<a href="{{ section.viewAll.url }}" class="view-all">{{ section.viewAll.text }}</a>{%- endif -%}
     </div>
-
-    <div class="blog-grid">
-      {% set posts = collections.posts | reverse %}
-      {% for post in posts | limit(section.limit) %}
-        {% include "components/ui/blog-card.njk" %}
-      {% endfor %}
-    </div>
+    <div class="blog-grid">{%- set posts = collections.posts | reverse -%}{%- for post in posts | limit(section.limit) -%}{%- include "components/ui/blog-card.njk" -%}{%- endfor -%}</div>
   </div>
-</section> 
+</section>
+{%- endif -%} 

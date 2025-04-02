@@ -6,16 +6,19 @@ module.exports = function(eleventyConfig) {
 
   // Add collections for blog posts and projects
   eleventyConfig.addCollection("blog", function(collection) {
-    return collection.getFilteredByGlob("src/blog/**/*.md");
+    return collection.getFilteredByGlob("src/blog/**/*.md")
+      .sort((a, b) => b.date - a.date);
   });
 
   eleventyConfig.addCollection("projects", function(collection) {
-    return collection.getFilteredByGlob("src/projects/**/*.md");
+    return collection.getFilteredByGlob("src/projects/**/*.md")
+      .sort((a, b) => b.date - a.date);
   });
 
   eleventyConfig.addCollection("featured_projects", function(collection) {
     return collection.getFilteredByGlob("src/projects/**/*.md")
-      .filter(item => item.data.featured);
+      .filter(item => item.data.featured)
+      .sort((a, b) => b.date - a.date);
   });
 
   // Add debug filter
@@ -28,9 +31,11 @@ module.exports = function(eleventyConfig) {
         description: value.data.description,
         featured: value.data.featured,
         background_color: value.data.background_color,
-        techStack: value.data.techStack
+        techStack: value.data.techStack,
+        date: value.data.date
       } : undefined,
-      url: value.url
+      url: value.url,
+      date: value.date
     };
     return `<pre style="font-size: 12px; padding: 10px; background: #f5f5f5; margin: 10px 0; white-space: pre-wrap;">${JSON.stringify(safeValue, null, 2)}</pre>`;
   });

@@ -1,7 +1,7 @@
-{% if tags %}
+{%- if tags -%}
 <div class="post-tags">
-    {% for tag in tags %}
+    {%- for tag in tags -%}
     <span class="post-tag">{{ tag }}</span>
-    {% endfor %}
+    {%- endfor -%}
 </div>
-{% endif %} 
+{%- endif -%} 
