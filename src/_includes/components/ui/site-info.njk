@@ -1,4 +1,4 @@
-{% if metadata %}
+{%- if metadata -%}
 <div class="site-info">
     <!-- 使用 site.js 的数据 -->
     <h1>{{ site.name }}</h1>
@@ -12,13 +12,10 @@
     </div>
 
     <!-- 使用条件判断 -->
-    {% if site.author %}
+    {%- if site.author -%}
     <div class="author-info">
         <p>Created by: {{ site.author.name }}</p>
-        {% if site.author.github %}
-        <a href="{{ site.author.github }}">GitHub Profile</a>
-        {% endif %}
-    </div>
-    {% endif %}
-</div>
-{% endif %} 
+        {%- if site.author.github -%}
+        <a href="{{ site.author.github }}">GitHub Profile</a>{%- endif -%}
+    </div>{%- endif -%}
+</div>{%- endif -%} 

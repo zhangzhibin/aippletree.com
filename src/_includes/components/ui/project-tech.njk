@@ -1,10 +1,9 @@
-{% if tech_stack %}
+{%- if tech_stack -%}
 <section class="project-tech">
     <h2>Tech Stack</h2>
     <ul class="tech-list">
-        {% for tech in tech_stack %}
+        {%- for tech in tech_stack -%}
         <li class="tech-item">{{ tech }}</li>
-        {% endfor %}
+        {%- endfor -%}
     </ul>
-</section>
-{% endif %} 
+</section>{%- endif -%} 

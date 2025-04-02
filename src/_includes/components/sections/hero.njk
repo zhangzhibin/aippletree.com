@@ -2,16 +2,16 @@
   <div class="hero-content">
     <h1 class="hero-title">{{ hero.title }}</h1>
     <p class="hero-subtitle">{{ hero.subtitle }}</p>
-    {% if hero.description %}
+    {%- if hero.description -%}
     <p class="hero-description">{{ hero.description }}</p>
-    {% endif %}
+    {%- endif -%}
     <div class="hero-actions">
-      {% if hero.primaryButton %}
+      {%- if hero.primaryButton -%}
       <a href="{{ hero.primaryButton.url }}" class="hero-button primary">{{ hero.primaryButton.text }}</a>
-      {% endif %}
-      {% if hero.secondaryButton %}
+      {%- endif -%}
+      {%- if hero.secondaryButton -%}
       <a href="{{ hero.secondaryButton.url }}" class="hero-button secondary">{{ hero.secondaryButton.text }}</a>
-      {% endif %}
+      {%- endif -%}
     </div>
   </div>
 </section> 

@@ -1,34 +1,29 @@
-{%- if post and post.data -%}
+{%- if post -%}
 <div class="blog-card">
-  {%- if post.data.thumbnail -%}
+  {%- if post.thumbnail -%}
   <div class="blog-card-image">
-    <img src="{{ post.data.thumbnail }}" alt="{{ post.data.title | default('Blog post image') }}">
+    <img src="{{ post.thumbnail }}" alt="{{ post.title | default('Blog post image') }}">
   </div>
   {%- endif -%}
   <div class="blog-card-content">
     <h2 class="blog-card-title">
-      <a href="{{ post.url | default('#') }}">{{ post.data.title | default('Untitled Post') }}</a>
+      <a href="{{ post.url | default('#') }}">{{ post.title | default('Untitled Post') }}</a>
     </h2>
-    {%- if post.data.description -%}
-    <p class="blog-card-description">{{ post.data.description }}</p>
-    {%- endif -%}
-    {%- if post.data.ai_metadata -%}
-    {%- set ai_metadata = post.data.ai_metadata -%}
-    {%- include "components/ui/ai-metadata.njk" -%}
+    {%- if post.description -%}
+    <p class="blog-card-description">{{ post.description }}</p>
     {%- endif -%}
     <div class="blog-card-meta">
-      {%- if post.data.date -%}
-      {%- set date = post.data.date -%}
+      {%- if post.date -%}
+      {%- set date = post.date -%}
       {%- endif -%}
-      {%- if post.data.readingTime -%}
-      {%- set readingTime = post.data.readingTime -%}
+      {%- if post.readingTime -%}
+      {%- set readingTime = post.readingTime -%}
       {%- endif -%}
-      {%- if post.data.tags -%}
-      {%- set tags = post.data.tags -%}
+      {%- if post.tags -%}
+      {%- set tags = post.tags -%}
       {%- endif -%}
       {%- include "components/ui/post-meta.njk" -%}
       {%- include "components/ui/post-tags.njk" -%}
     </div>
   </div>
-</div>
-{%- endif -%} 
+</div>{%- endif -%} 

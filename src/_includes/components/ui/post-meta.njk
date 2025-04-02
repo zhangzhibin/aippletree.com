@@ -1,10 +1,9 @@
-{% if date or readingTime %}
+{%- if date or readingTime -%}
 <div class="post-meta">
-    {% if date %}
-    <time datetime="{{ date | dateToISO }}">{{ date | dateToISO | formatDate }}</time>
-    {% endif %}
-    {% if readingTime %}
-    <span class="post-reading-time">{{ readingTime }} min read</span>
-    {% endif %}
-</div>
-{% endif %} 
+  {%- if date -%}
+  <time datetime="{{ date | dateToISO }}">{{ date | dateToISO | formatDate }}</time>
+  {%- endif -%}
+  {%- if readingTime -%}
+  <span class="post-reading-time">{{ readingTime }} min read</span>
+  {%- endif -%}
+</div>{%- endif -%} 

@@ -6,8 +6,10 @@ module.exports = function(eleventyConfig) {
 
   // Add collections for blog posts and projects
   eleventyConfig.addCollection("blog", function(collection) {
-    return collection.getFilteredByGlob("src/blog/**/*.md")
+    const posts = collection.getFilteredByGlob("src/blog/**/*.md")
       .sort((a, b) => b.date - a.date);
+    console.log("Blog posts:", posts.map(p => ({ title: p.data.title, date: p.data.date })));
+    return posts;
   });
 
   eleventyConfig.addCollection("projects", function(collection) {
@@ -17,7 +19,7 @@ module.exports = function(eleventyConfig) {
 
   eleventyConfig.addCollection("featured_projects", function(collection) {
     return collection.getFilteredByGlob("src/projects/**/*.md")
-      .filter(item => item.data.featured)
+      .filter(item => item.featured)
       .sort((a, b) => b.date - a.date);
   });
 
@@ -26,32 +28,27 @@ module.exports = function(eleventyConfig) {
     // 只显示关键数据，避免循环引用
     const safeValue = {
       title: value.title,
-      data: value.data ? {
-        title: value.data.title,
-        description: value.data.description,
-        featured: value.data.featured,
-        background_color: value.data.background_color,
-        techStack: value.data.techStack,
-        date: value.data.date
-      } : undefined,
-      url: value.url,
-      date: value.date
+      description: value.description,
+      featured: value.featured,
+      background_color: value.background_color,
+      techStack: value.techStack,
+      date: value.date,
+      url: value.url
     };
     return `<pre style="font-size: 12px; padding: 10px; background: #f5f5f5; margin: 10px 0; white-space: pre-wrap;">${JSON.stringify(safeValue, null, 2)}</pre>`;
   });
 
-  // Add date formatting filter
+  // Add date formatting filters
+  eleventyConfig.addFilter("dateToISO", function(date) {
+    return new Date(date).toISOString().split('T')[0];
+  });
+
   eleventyConfig.addFilter("formatDate", function(date) {
     return new Date(date).toLocaleDateString('en-US', {
       year: 'numeric',
       month: 'long',
       day: 'numeric'
     });
-  });
-
-  // Add dateToISO filter
-  eleventyConfig.addFilter("dateToISO", function(date) {
-    return new Date(date).toISOString();
   });
 
   // Add limit filter

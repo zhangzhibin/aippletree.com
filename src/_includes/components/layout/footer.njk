@@ -1,3 +1,4 @@
+{%- if site -%}
 <footer class="footer">
     <div class="footer-content">
         <p>&copy; {{ page.date.getFullYear() }} {{ site.name }}. All rights reserved.</p>
@@ -7,15 +8,15 @@
             <span class="leaf leaf-3">🍃</span>
         </div>
         <div class="footer-links">
-            {% if site.social.github %}
+            {%- if site.social.github -%}
             <a href="{{ site.social.github }}" target="_blank" rel="noopener noreferrer">GitHub</a>
-            {% endif %}
-            {% if site.social.twitter %}
+            {%- endif -%}
+            {%- if site.social.twitter -%}
             <a href="{{ site.social.twitter }}" target="_blank" rel="noopener noreferrer">Twitter</a>
-            {% endif %}
-            {% if site.contact.email %}
+            {%- endif -%}
+            {%- if site.contact.email -%}
             <a href="mailto:{{ site.contact.email }}">Contact</a>
-            {% endif %}
+            {%- endif -%}
         </div>
     </div>
-</footer> 
+</footer>{%- endif -%} 

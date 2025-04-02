@@ -73,3 +73,7 @@ chat 使用中文
 - matadata
 - navigation
 - site
+
+## 代码严谨
+
+- 尽量使用 `{%- -%}` , 而不是 `{% %}`

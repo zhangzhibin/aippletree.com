@@ -1,13 +1,12 @@
-{% if author %}
+{%- if author -%}
 <div class="author-info">
-    {% if author.avatar %}
+    {%- if author.avatar -%}
     <img src="{{ author.avatar }}" alt="{{ author.name }}" class="author-avatar">
-    {% endif %}
+    {%- endif -%}
     <div class="author-details">
         <h3 class="author-name">{{ author.name }}</h3>
-        {% if author.bio %}
+        {%- if author.bio -%}
         <p class="author-bio">{{ author.bio }}</p>
-        {% endif %}
+        {%- endif -%}
     </div>
-</div>
-{% endif %} 
+</div>{%- endif -%} 

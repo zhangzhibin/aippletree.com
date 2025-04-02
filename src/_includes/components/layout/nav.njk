@@ -1,11 +1,12 @@
+{%- if site -%}
 <nav class="nav" role="navigation">
     <!-- 桌面版导航 -->
     <div class="nav-content desktop-nav">
         <a href="/" class="nav-logo" aria-label="Home">{{ site.shortName }}</a>
         <div class="nav-links" role="menubar">
-            <a href="/" class="nav-link{% if page.url == '/' %} active{% endif %}" role="menuitem">Home</a>
-            <a href="/projects" class="nav-link{% if page.url == '/projects/' %} active{% endif %}" role="menuitem">Projects</a>
-            <a href="/blog" class="nav-link{% if page.url == '/blog/' %} active{% endif %}" role="menuitem">Blog</a>
+            <a href="/" class="nav-link{%- if page.url == '/' -%} active{%- endif -%}" role="menuitem">Home</a>
+            <a href="/projects" class="nav-link{%- if page.url == '/projects/' -%} active{%- endif -%}" role="menuitem">Projects</a>
+            <a href="/blog" class="nav-link{%- if page.url == '/blog/' -%} active{%- endif -%}" role="menuitem">Blog</a>
         </div>
     </div>
 
@@ -24,9 +25,9 @@
         </div>
         <div id="mobile-menu" class="mobile-nav-menu" role="menu" aria-hidden="true">
             <h2 class="mobile-nav-title">{{ site.name }}</h2>
-            <a href="/" class="nav-link{% if page.url == '/' %} active{% endif %}" role="menuitem">Home</a>
-            <a href="/projects" class="nav-link{% if page.url == '/projects/' %} active{% endif %}" role="menuitem">Projects</a>
-            <a href="/blog" class="nav-link{% if page.url == '/blog/' %} active{% endif %}" role="menuitem">Blog</a>
+            <a href="/" class="nav-link{%- if page.url == '/' -%} active{%- endif -%}" role="menuitem">Home</a>
+            <a href="/projects" class="nav-link{%- if page.url == '/projects/' -%} active{%- endif -%}" role="menuitem">Projects</a>
+            <a href="/blog" class="nav-link{%- if page.url == '/blog/' -%} active{%- endif -%}" role="menuitem">Blog</a>
         </div>
     </div>
-</nav> 
+</nav>{%- endif -%} 
