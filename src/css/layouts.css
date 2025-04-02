@@ -100,8 +100,6 @@
     max-width: 1200px;
     margin: 0 auto;
     padding: 2rem 1rem;
-    position: relative;
-    z-index: 1;
 }
 
 .projects-grid {
@@ -192,8 +190,6 @@
 .page-header {
     text-align: center;
     margin-bottom: 2.5rem;
-    position: relative;
-    z-index: 1;
 }
 
 .page-title {

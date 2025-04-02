@@ -24,6 +24,21 @@
     box-sizing: border-box;
 }
 
+/* 链接样式 */
+a {
+    color: var(--text-color);
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+a:visited {
+    color: var(--text-color);
+}
+
+a:hover {
+    color: var(--primary-color);
+}
+
 body {
     font-family: var(--font-family);
     line-height: 1.6;
@@ -36,23 +51,20 @@ body {
         radial-gradient(circle at 0% 100%, rgba(245, 166, 35, 0.1) 0%, transparent 50%);
 }
 
-/* 容器样式 */
-.container {
-    max-width: var(--container-width);
-    margin: 0 auto;
-    padding: 0 var(--container-padding);
-    width: 100%;
-}
-
 /* 导航栏 */
 header {
     background-color: rgba(255, 255, 255, 0.9);
     padding: 1rem;
     box-shadow: 0 2px 10px var(--shadow-color);
     backdrop-filter: blur(10px);
-    position: sticky;
-    top: 0;
-    z-index: 100;
+}
+
+/* 容器样式 */
+.container {
+    max-width: var(--container-width);
+    margin: 0 auto;
+    padding: 0 var(--container-padding);
+    width: 100%;
 }
 
 /* 主要内容 */
