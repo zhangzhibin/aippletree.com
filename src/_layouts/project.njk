@@ -3,18 +3,29 @@ layout: base.njk
 templateClass: template-project
 bodyClass: page-project
 seo:
-  changefreq: weekly
+  changefreq: monthly
   priority: 0.7
   robots: index, follow
 components:
-  header:
-    sticky: true
+  header: {}
   footer:
     showNewsletter: true
 ---
 
 <article class="project">
-    {% include "components/ui/project-header.njk" %}
+    <header class="project-header">
+        <h1 class="project-title">{{ title }}</h1>
+        <div class="project-meta">
+            <time datetime="{{ date | dateToISO }}">{{ date | formatDate }}</time>
+            {% if tags %}
+            <div class="project-tags">
+                {% for tag in tags %}
+                <a href="/tags/{{ tag }}" class="tag">{{ tag }}</a>
+                {% endfor %}
+            </div>
+            {% endif %}
+        </div>
+    </header>
 
     <div class="project-content">
         {{ content | safe }}

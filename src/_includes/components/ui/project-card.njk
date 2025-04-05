@@ -1,35 +1,41 @@
 {%- if project and project.data -%}
 <div class="project-card">
-    <a href="{{ project.url }}" class="project-thumbnail-link" data-background-color="{{ project.data.background_color | default('#4a90e2') }}">
+    <div class="project-card-image">
         {%- if project.data.thumbnail -%}
-            <img src="{{ project.data.thumbnail }}" alt="{{ project.data.title }}">
+            <a href="{{ project.url }}" class="project-card-image-link">
+                <img src="{{ project.data.thumbnail }}" alt="{{ project.data.title }}">
+            </a>
         {%- else -%}
-            <div class="project-thumbnail-placeholder">
-                <h3>{{ project.data.title }}</h3>
-            </div>
+            <a href="{{ project.url }}" class="project-card-image-link">
+                <div class="project-card-placeholder" style="background-color: {{ project.data.background_color | default('#4a90e2') }}">
+                    <h3>{{ project.data.title }}</h3>
+                </div>
+            </a>
         {%- endif -%}
-    </a>
+    </div>
     <div class="project-card-content">
-        <h3 class="project-card-title">
-            <a href="{{ project.url }}" class="project-card-title-link">{{ project.data.title }}</a>
-        </h3>
+        <h2 class="project-card-title">
+            <a href="{{ project.url }}">{{ project.data.title }}</a>
+        </h2>
         {%- if project.data.description -%}
         <p class="project-card-description">{{ project.data.description }}</p>
         {%- endif -%}
-        {%- if project.data.techStack -%}
-        <div class="project-card-tech">
-            {%- for tech in project.data.techStack -%}
-            <span class="tech-tag">{{ tech }}</span>
-            {%- endfor -%}
+        <div class="project-card-meta">
+            {%- if project.data.techStack -%}
+            <div class="project-card-tech">
+                {%- for tech in project.data.techStack -%}
+                <span class="tech-tag">{{ tech }}</span>
+                {%- endfor -%}
+            </div>
+            {%- endif -%}
+            {%- if project.data.tags -%}
+            <div class="project-card-tags">
+                {%- for tag in project.data.tags -%}
+                <span class="project-tag">{{ tag }}</span>
+                {%- endfor -%}
+            </div>
+            {%- endif -%}
         </div>
-        {%- endif -%}
-        {%- if project.data.tags -%}
-        <div class="project-card-tags">
-            {%- for tag in project.data.tags -%}
-            <span class="tag">{{ tag }}</span>
-            {%- endfor -%}
-        </div>
-        {%- endif -%}
         {% if project.data.ai_metadata %}
         {% set ai_metadata = project.data.ai_metadata %}
         {% include "components/ui/ai-metadata.njk" %}

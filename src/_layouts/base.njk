@@ -1,17 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    {% include "components/layout/head.njk" %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title }} | AIppleTree</title>
+    <meta name="description" content="{{ description }}">
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
-<body class="layout">
-    {% include "components/layout/nav.njk" %}
-    {% include "components/layout/background.njk" %}
-    
-    <main class="layout-content">
-        {% include "components/layout/container.njk" %}
-    </main>
+<body class="{{ bodyClass }}">
+    <div class="layout">
+        <header class="layout-header">
+            {% include "components/layout/nav.njk" %}
+        </header>
 
-    {% include "components/layout/footer.njk" %}
+        <main class="layout-content">
+            <div class="container">
+                <div class="container-content">
+                    {{ content | safe }}
+                </div>
+            </div>
+        </main>
+
+        <footer class="layout-footer">
+            {% include "components/layout/footer.njk" %}
+        </footer>
+    </div>
+
+    <div class="background-decoration">
+        <div class="cloud cloud-1"></div>
+        <div class="cloud cloud-2"></div>
+        <div class="cloud cloud-3"></div>
+    </div>
+
     <script src="/js/main.js" defer></script>
 </body>
 </html> 

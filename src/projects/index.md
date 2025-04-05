@@ -22,7 +22,7 @@ sections:
     id: "projects"
     title: All Projects
     class: "projects-grid"
-    limit: 20
+    limit: 12
     viewAll: false
 ---
 
