@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{%- if title -%}{{ title }} | {%- endif -%}AippleTree</title>
-    <meta name="description" content="{%- if description -%}{{ description }}{%- else -%}AippleTree - Building innovative AI-powered solutions{%- endif -%}">
+    <title>{{ title }}{% if title %} |{% endif %}AippleTree</title>
+    <meta name="description" content="{{ description }}">
     
     <!-- Open Graph / Social Media -->
-    <meta property="og:title" content="{%- if title -%}{{ title }} | {%- endif -%}AippleTree">
-    <meta property="og:description" content="{%- if description -%}{{ description }}{%- else -%}AippleTree - Building innovative AI-powered solutions{%- endif -%}">
+    <meta property="og:title" content="{{ title }}{% if title %} |{% endif %}AippleTree">
+    <meta property="og:description" content="{{ description }}">
     <meta property="og:type" content="website">
-    <meta property="og:url" content="{{ page.url | absoluteUrl }}">
+    <meta property="og:url" content="https://aippletree.com{{ page.url }}">
     <meta property="og:image" content="/assets/images/og-image.jpg">
     
     <!-- Favicon -->
@@ -31,56 +31,20 @@
 </head>
 <body>
     <!-- Navigation -->
-    {%- include "components/nav.njk" -%}
+    {% include "components/nav.njk" %}
 
     <!-- Main Content -->
-    <main>{{ content | safe }}</main>
+    <main>
+        {{ content | safe }}
+    </main>
 
     <!-- Newsletter -->
-    <section class="newsletter-section">
-        <div class="page-container">
-            <h2>Subscribe to our newsletter</h2>
-            <p>Get the latest updates on our projects and articles</p>
-            <form class="newsletter-form">
-                <div class="input-group">
-                    <input type="email" class="input" placeholder="Your email address" required>
-                    <button type="submit" class="button button-primary">Subscribe</button>
-                </div>
-            </form>
-        </div>
-    </section>
+    {%- if hideNewsletter !== true -%}
+    {% include "components/newsletter.njk" %}
+    {%- endif -%}
 
     <!-- Footer -->
-    <footer class="footer">
-        <div class="page-container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h3>AippleTree</h3>
-                    <p>Building innovative AI-powered solutions that make a difference.</p>
-                </div>
-                <div class="footer-section">
-                    <h3>Quick Links</h3>
-                    <ul>
-                        <li><a href="/">Home</a></li>
-                        <li><a href="/blog">Blog</a></li>
-                        <li><a href="/projects">Projects</a></li>
-                        <li><a href="/about">About</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h3>Connect</h3>
-                    <div class="social-links">
-                        <a href="https://github.com/aippletree" target="_blank" rel="noopener">GitHub</a>
-                        <a href="https://twitter.com/aippletree" target="_blank" rel="noopener">Twitter</a>
-                        <a href="https://linkedin.com/company/aippletree" target="_blank" rel="noopener">LinkedIn</a>
-                    </div>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; <script>document.write(new Date().getFullYear())</script> AippleTree. All rights reserved.</p>
-            </div>
-        </div>
-    </footer>
+    {% include "components/footer.njk" %}
 
     <!-- JavaScript -->
     <script type="module" src="/js/main.js"></script>

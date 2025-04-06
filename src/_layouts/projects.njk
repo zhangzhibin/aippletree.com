@@ -1,9 +1,11 @@
 ---
 layout: base.njk
+hideNewsletter: true
 ---
 
 {%- from "components/card.njk" import projectCard -%}
 {%- from "components/pagination.njk" import pagination -%}
+{%- from "components/get-in-touch.njk" import getInTouch -%}
 
 <!-- Projects Header -->
 <header class="content-header">
@@ -61,11 +63,4 @@ layout: base.njk
     </div>
 </div>
 
-<!-- Contact Section -->
-<section class="contact-section">
-    <div class="page-container">
-        <h2>Have a Project in Mind?</h2>
-        <p>Let's collaborate and create something amazing together.</p>
-        <a href="/contact" class="button button-primary">Get in Touch</a>
-    </div>
-</section> 
+{{ getInTouch("Have a Project in Mind?", "Let's collaborate and create something amazing together.") }} 
