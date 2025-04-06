@@ -1,36 +1,152 @@
 ---
 layout: base.njk
-templateClass: template-project
-bodyClass: page-project
-seo:
-  changefreq: monthly
-  priority: 0.7
-  robots: index, follow
-components:
-  header: {}
-  footer:
-    showNewsletter: true
 ---
 
-<article class="project">
-    <header class="project-header">
-        <h1 class="project-title">{{ title }}</h1>
-        <div class="project-meta">
-            <time datetime="{{ date | dateToISO }}">{{ date | formatDate }}</time>
-            {% if tags %}
-            <div class="project-tags">
-                {% for tag in tags %}
-                <a href="/tags/{{ tag }}" class="tag">{{ tag }}</a>
-                {% endfor %}
+<article class="content-article">
+    <!-- Project Header -->
+    <header class="content-header">
+        <div class="page-container">
+            <div class="content-meta">
+                <span class="project-category">{{ category }}</span>
+                <span class="project-year">{{ year }}</span>
             </div>
-            {% endif %}
+            <h1>{{ title }}</h1>
+            {%- if description -%}
+            <p class="content-description">{{ description }}</p>
+            {%- endif -%}
+            <div class="project-tech">
+                {%- for tech in techStack | defaultTechStack -%}
+                <span class="tech-tag">{{ tech }}</span>
+                {%- endfor -%}
+            </div>
         </div>
     </header>
 
-    <div class="project-content">
-        {{ content | safe }}
+    <!-- Project Gallery -->
+    {%- if gallery -%}
+    <div class="project-gallery">
+        <div class="page-container">
+            <div class="gallery-grid">
+                {%- for image in gallery -%}
+                <div class="gallery-item">
+                    <img src="{{ image.url }}" alt="{{ image.caption }}">
+                    {%- if image.caption -%}
+                    <p class="gallery-caption">{{ image.caption }}</p>
+                    {%- endif -%}
+                </div>
+                {%- endfor -%}
+            </div>
+        </div>
+    </div>
+    {%- endif -%}
+
+    <!-- Project Content -->
+    <div class="content-body">
+        <div class="page-container">
+            {{ content | safe }}
+        </div>
     </div>
 
-    {% include "components/ui/project-features.njk" %}
-    {% include "components/ui/project-tech.njk" %}
-</article> 
+    <!-- Project Features -->
+    {%- if features -%}
+    <section class="project-features">
+        <div class="page-container">
+            <h2>Key Features</h2>
+            <div class="features-grid">
+                {%- for feature in features -%}
+                <div class="feature-item">
+                    <h3>{{ feature.title }}</h3>
+                    <p>{{ feature.description }}</p>
+                </div>
+                {%- endfor -%}
+            </div>
+        </div>
+    </section>
+    {%- endif -%}
+
+    <!-- Project Links -->
+    {%- if links -%}
+    <section class="project-links">
+        <div class="page-container">
+            <h2>Project Links</h2>
+            <div class="links-grid">
+                {%- if links.demo -%}
+                <a href="{{ links.demo }}" class="button button-primary" target="_blank" rel="noopener">
+                    View Demo
+                </a>
+                {%- endif -%}
+                {%- if links.github -%}
+                <a href="{{ links.github }}" class="button button-secondary" target="_blank" rel="noopener">
+                    View on GitHub
+                </a>
+                {%- endif -%}
+                {%- if links.documentation -%}
+                <a href="{{ links.documentation }}" class="button button-secondary" target="_blank" rel="noopener">
+                    Documentation
+                </a>
+                {%- endif -%}
+            </div>
+        </div>
+    </section>
+    {%- endif -%}
+
+    <!-- Project Footer -->
+    <footer class="content-footer">
+        <div class="page-container">
+            <!-- Share Buttons -->
+            <div class="share-buttons">
+                <h3>Share this project</h3>
+                <div class="social-share">
+                    <a href="https://twitter.com/intent/tweet?text={{ title | urlencode }}&url={{ url | urlencode }}" 
+                       target="_blank" 
+                       rel="noopener" 
+                       class="button button-secondary">
+                        Share on Twitter
+                    </a>
+                    <a href="https://www.linkedin.com/shareArticle?mini=true&url={{ url | urlencode }}&title={{ title | urlencode }}" 
+                       target="_blank" 
+                       rel="noopener" 
+                       class="button button-secondary">
+                        Share on LinkedIn
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+</article>
+
+<!-- Related Projects -->
+<section class="related-projects">
+    <div class="page-container">
+        <h2>Related Projects</h2>
+        <div class="grid grid-3">
+            {%- for project in collections.relatedProjects -%}
+            <article class="project-card">
+                <div class="project-card-image">
+                    <img src="{{ project.data.thumbnail | defaultThumbnail }}" alt="{{ project.data.title }}">
+                </div>
+                <div class="project-card-content">
+                    <h3 class="project-card-title">
+                        <a href="{{ project.url }}">{{ project.data.title }}</a>
+                    </h3>
+                    <p class="project-card-description">{{ project.data.description }}</p>
+                    <div class="project-card-tech">
+                        {%- for tech in project.data.techStack | defaultTechStack -%}
+                        <span class="tech-tag">{{ tech }}</span>
+                        {%- endfor -%}
+                    </div>
+                </div>
+            </article>
+            {%- endfor -%}
+        </div>
+    </div>
+</section>
+
+<!-- Contact Section -->
+<section class="contact-section">
+    <div class="page-container">
+        <h2>Interested in this project?</h2>
+        <p>Let's discuss how we can work together.</p>
+        <a href="/contact" class="button button-primary">Get in Touch</a>
+    </div>
+</section> 

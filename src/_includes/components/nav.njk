@@ -1,0 +1,39 @@
+{%- set navItems = [
+  { text: "Home", url: "/" },
+  { text: "Blog", url: "/blog/" },
+  { text: "Projects", url: "/projects/" },
+  { text: "About", url: "/about/" }
+] -%}
+
+<nav class="nav">
+  <div class="nav-content">
+    <a href="/" class="nav-logo">
+      <img src="/assets/images/logo.svg" alt="AippleTree Logo" width="40" height="40">
+      <span>AippleTree</span>
+    </a>
+
+    <button class="nav-toggle" aria-label="Toggle navigation menu">
+      <span class="nav-toggle-icon"></span>
+    </button>
+
+    <div class="nav-links">
+      {%- for item in navItems -%}
+      <a href="{{ item.url }}" class="nav-link {%- if page.url == item.url -%}active{%- endif -%}">
+        {{ item.text }}
+      </a>
+      {%- endfor -%}
+    </div>
+  </div>
+</nav>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const navToggle = document.querySelector('.nav-toggle');
+  const navLinks = document.querySelector('.nav-links');
+  
+  navToggle.addEventListener('click', function() {
+    navToggle.classList.toggle('active');
+    navLinks.classList.toggle('active');
+  });
+});
+</script> 

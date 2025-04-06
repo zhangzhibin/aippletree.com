@@ -1,25 +1,71 @@
 ---
 layout: base.njk
-templateClass: template-projects
-bodyClass: page-projects
-seo:
-  changefreq: weekly
-  priority: 0.8
-  robots: index, follow
-components:
-  header: {}
-  footer:
-    showNewsletter: true
 ---
 
-<article class="projects-page">
-    <header class="projects-header">
-        {% include "components/ui/page-title.njk" %}
-    </header>
+{%- from "components/card.njk" import projectCard -%}
+{%- from "components/pagination.njk" import pagination -%}
 
-    <section class="projects-grid">
-        {% for project in collections.projects | reverse %}
-            {% include "components/ui/project-card.njk" %}
-        {% endfor %}
-    </section>
-</article> 
+<!-- Projects Header -->
+<header class="content-header">
+    <div class="page-container">
+        <h1>Projects</h1>
+        <p class="content-description">Explore our innovative projects at the intersection of technology and creativity.</p>
+    </div>
+</header>
+
+<!-- Featured Project -->
+<section class="featured-project">
+    <div class="page-container">
+        <h2>Featured Project</h2>
+        {%- set featuredProject = collections.projects | find("featured", true) -%}
+        {%- if featuredProject -%}
+        <div class="featured-project-content">
+            <div class="featured-project-image">
+                <img src="{{ featuredProject.data.thumbnail | defaultThumbnail }}" alt="{{ featuredProject.data.title }}">
+            </div>
+            <div class="featured-project-info">
+                <h3>{{ featuredProject.data.title }}</h3>
+                <p>{{ featuredProject.data.description }}</p>
+                <div class="featured-project-tech">
+                    {%- for tech in featuredProject.data.techStack | defaultTechStack -%}
+                    <span class="tech-tag">{{ tech }}</span>
+                    {%- endfor -%}
+                </div>
+                <a href="{{ featuredProject.url }}" class="button button-primary">Learn More</a>
+            </div>
+        </div>
+        {%- endif -%}
+    </div>
+</section>
+
+<!-- Projects Content -->
+<div class="page-container">
+    <!-- Projects Grid -->
+    <div class="grid grid-3">
+        {%- for project in page.projects -%}
+        <div data-technologies="{{ project.data.techStack | defaultTechStack | join(' ') }}" data-category="{{ project.data.category }}">
+            {{ projectCard(project) }}
+        </div>
+        {%- endfor -%}
+    </div>
+
+    <!-- No Results Message -->
+    <div class="no-results" style="display: none;">
+        <p>No projects found matching your criteria.</p>
+        <button class="button button-secondary" onclick="resetFilters()">Reset Filters</button>
+    </div>
+
+    <!-- Pagination -->
+    <div class="pagination-wrapper">
+        {{ pagination("/projects/", page.pageNumber, page.totalPages) }}
+    </div>
+</div>
+
+<!-- Contact Section -->
+<section class="contact-section">
+    <div class="page-container">
+        <h2>Have a Project in Mind?</h2>
+        <p>Let's collaborate and create something amazing together.</p>
+        <a href="/contact" class="button button-primary">Get in Touch</a>
+    </div>
+</section> 

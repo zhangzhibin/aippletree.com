@@ -1,7 +1,7 @@
 ---
-layout: blog.njk
+layout: projects.njk
 pagination:
-  data: collections.pagedBlog
+  data: collections.pagedProjects
   size: 1
   alias: page
 date: 2024-03-31

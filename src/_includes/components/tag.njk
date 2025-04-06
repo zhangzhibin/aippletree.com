@@ -1,0 +1,15 @@
+{%- macro tag(text, type="default", url="") -%}
+{%- if url -%}
+<a href="{{ url }}" class="tag tag-{{ type }}">{{ text }}</a>
+{%- else -%}
+<span class="tag tag-{{ type }}">{{ text }}</span>
+{%- endif -%}
+{%- endmacro -%}
+
+{%- macro tagList(tags, type="default") -%}
+<div class="tag-list">
+  {%- for tag in tags -%}
+  {{ tag(tag, type) }}
+  {%- endfor -%}
+</div>
+{%- endmacro -%} 

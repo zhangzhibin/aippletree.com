@@ -1,160 +1,172 @@
-/* 吉卜力风格变量 */
+/* CSS Variables */
 :root {
-    --primary-color: #4A90E2;  /* 天空蓝 */
-    --primary-color-rgb: 74, 144, 226;  /* 天空蓝的 RGB 值 */
-    --secondary-color: #F5A623;  /* 温暖橙 */
-    --background-color: #F8F9FA;  /* 米白色背景 */
-    --text-color: #2C3E50;  /* 深灰文字 */
-    --text-secondary: #666;  /* 次要文字颜色 */
-    --accent-color: #7ED321;  /* 自然绿 */
-    --shadow-color: rgba(0, 0, 0, 0.1);
-    --card-bg: white;  /* 卡片背景色 */
-    --card-shadow: 0 4px 12px var(--shadow-color);  /* 卡片阴影 */
-    --border-radius: 12px;
-    --font-family: 'Quicksand', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-    --container-width: 1200px;
-    --container-padding: 1rem;
-    --border-color: #e1e4e8;
+  /* Colors */
+  --primary-color: #4A90E2;
+  --secondary-color: #50E3C2;
+  --text-color: #2C3E50;
+  --text-secondary: #7F8C8D;
+  --background-color: #FFFFFF;
+  --background-secondary: #F5F7FA;
+  --border-color: #E1E8ED;
+  --shadow-color: rgba(0, 0, 0, 0.1);
+  --success-color: #2ECC71;
+  --error-color: #E74C3C;
+  --warning-color: #F1C40F;
+  --info-color: #3498DB;
+
+  /* Typography */
+  --font-family: 'Quicksand', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  --font-size-base: 16px;
+  --font-size-small: 0.875rem;
+  --font-size-large: 1.125rem;
+  --line-height-base: 1.5;
+  --line-height-heading: 1.2;
+
+  /* Spacing */
+  --spacing-unit: 1rem;
+  --spacing-small: calc(var(--spacing-unit) * 0.5);
+  --spacing-medium: var(--spacing-unit);
+  --spacing-large: calc(var(--spacing-unit) * 1.5);
+  --spacing-xlarge: calc(var(--spacing-unit) * 2);
+
+  /* Layout */
+  --container-width: 1200px;
+  --container-padding: 1rem;
+  --header-height: 4rem;
+  --footer-height: 4rem;
+
+  /* Border Radius */
+  --border-radius-small: 4px;
+  --border-radius-medium: 8px;
+  --border-radius-large: 16px;
+
+  /* Transitions */
+  --transition-fast: 0.2s ease;
+  --transition-normal: 0.3s ease;
+  --transition-slow: 0.5s ease;
+
+  /* Z-index */
+  --z-index-dropdown: 1000;
+  --z-index-sticky: 1020;
+  --z-index-fixed: 1030;
+  --z-index-modal: 1040;
+  --z-index-popover: 1050;
+  --z-index-tooltip: 1060;
 }
 
-/* 基础样式 */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+/* Reset & Base Styles */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
-/* 链接样式 */
-a {
-    color: var(--text-color);
-    text-decoration: none;
-    transition: color 0.2s ease;
-}
-
-a:visited {
-    color: var(--text-color);
-}
-
-a:hover {
-    color: var(--primary-color);
+html {
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-base);
+  -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: transparent;
 }
 
 body {
-    font-family: var(--font-family);
-    line-height: 1.6;
-    color: var(--text-color);
-    margin: 0;
-    padding: 0;
-    background-color: var(--background-color);
-    background-image: 
-        radial-gradient(circle at 100% 0%, rgba(74, 144, 226, 0.1) 0%, transparent 50%),
-        radial-gradient(circle at 0% 100%, rgba(245, 166, 35, 0.1) 0%, transparent 50%);
+  font-family: var(--font-family);
+  color: var(--text-color);
+  background-color: var(--background-color);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-/* 导航栏 */
-header {
-    background-color: rgba(255, 255, 255, 0.9);
-    padding: 1rem;
-    box-shadow: 0 2px 10px var(--shadow-color);
-    backdrop-filter: blur(10px);
+/* Typography */
+h1, h2, h3, h4, h5, h6 {
+  margin-top: 0;
+  margin-bottom: var(--spacing-medium);
+  font-weight: 600;
+  line-height: var(--line-height-heading);
 }
 
-/* 容器样式 */
-.container {
-    max-width: var(--container-width);
-    margin: 0 auto;
-    padding: 0 var(--container-padding);
-    width: 100%;
+h1 { font-size: 2.5rem; }
+h2 { font-size: 2rem; }
+h3 { font-size: 1.75rem; }
+h4 { font-size: 1.5rem; }
+h5 { font-size: 1.25rem; }
+h6 { font-size: 1rem; }
+
+p {
+  margin-top: 0;
+  margin-bottom: var(--spacing-medium);
 }
 
-/* 主要内容 */
-main {
-    min-height: calc(100vh - 60px);
-    width: 100%;
+a {
+  color: var(--primary-color);
+  text-decoration: none;
+  transition: color var(--transition-fast);
 }
 
-/* 标题样式 */
-h1 {
-    font-size: 2.5rem;
-    margin-bottom: 1.5rem;
-    color: var(--primary-color);
-    text-align: center;
-    position: relative;
-    display: inline-block;
+a:hover {
+  color: var(--secondary-color);
 }
 
-h1::after {
-    content: '';
-    position: absolute;
-    bottom: -10px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 60px;
-    height: 4px;
-    background-color: var(--secondary-color);
-    border-radius: 2px;
+/* Images */
+img {
+  max-width: 100%;
+  height: auto;
+  vertical-align: middle;
 }
 
-h2 {
-    font-size: 2rem;
-    margin-top: 2rem;
-    margin-bottom: 1rem;
-    color: var(--text-color);
+/* Lists */
+ul, ol {
+  margin-top: 0;
+  margin-bottom: var(--spacing-medium);
+  padding-left: var(--spacing-large);
 }
 
-/* 列表样式 */
-ul {
-    list-style: none;
-    padding: 0;
+/* Forms */
+button,
+input,
+optgroup,
+select,
+textarea {
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  margin: 0;
 }
 
-li {
-    margin-bottom: 1rem;
-    padding-left: 1.5rem;
-    position: relative;
+button {
+  cursor: pointer;
+  border: none;
+  background: none;
 }
 
-li::before {
-    content: '•';
-    color: var(--secondary-color);
-    position: absolute;
-    left: 0;
-    font-size: 1.5rem;
+/* Utilities */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
 }
 
-/* 页脚 */
-footer {
-    text-align: center;
-    padding: 2rem;
-    background-color: rgba(255, 255, 255, 0.9);
-    margin-top: 4rem;
-    box-shadow: 0 -2px 10px var(--shadow-color);
+/* Responsive Breakpoints */
+@media (max-width: 480px) {
+  :root {
+    --container-padding: 0.75rem;
+    --font-size-base: 15px;
+  }
 }
 
-/* 响应式设计 */
-@media (max-width: 600px) {
-    h1 {
-        font-size: 2rem;
-    }
-
-    h2 {
-        font-size: 1.5rem;
-    }
+@media (min-width: 481px) and (max-width: 768px) {
+  :root {
+    --container-padding: 1rem;
+  }
 }
 
-/* 动画效果 */
-@keyframes float {
-    0% {
-        transform: translateY(0px);
-    }
-    50% {
-        transform: translateY(-10px);
-    }
-    100% {
-        transform: translateY(0px);
-    }
-}
-
-.floating {
-    animation: float 3s ease-in-out infinite;
+@media (min-width: 769px) {
+  :root {
+    --container-padding: 2rem;
+  }
 } 

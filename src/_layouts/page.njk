@@ -4,22 +4,52 @@ layout: base.njk
 
 <article class="page">
     <header class="page-header">
-        {% include "components/ui/page-title.njk" %}
-        {% if description %}
-        <p class="page-description">{{ description }}</p>
-        {% endif %}
+        <div class="container">
+            <h1 class="page-title">{{ title }}</h1>
+            {%- if description -%}
+            <p class="page-description">{{ description }}</p>
+            {%- endif -%}
+        </div>
     </header>
 
     <div class="page-content">
-        {{ content | safe }}
+        <div class="container">
+            {{ content | safe }}
+        </div>
     </div>
 
-    {% if page.url != "/404.html" and show_contact %}
-    <footer class="page-footer">
-        <div class="contact-info">
-            <h2>Get in Touch</h2>
-            {% include "components/ui/contact-links.njk" %}
+    {%- if relatedPages -%}
+    <section class="related-pages">
+        <div class="container">
+            <h2>Related Pages</h2>
+            <div class="related-pages-grid">
+                {%- for page in collections.relatedPages -%}
+                <a href="{{ page.url }}" class="related-page-card">
+                    {%- if page.data.thumbnail -%}
+                    <div class="related-page-image">
+                        <img src="{{ page.data.thumbnail }}" alt="{{ page.data.title }}">
+                    </div>
+                    {%- endif -%}
+                    <div class="related-page-info">
+                        <h3>{{ page.data.title }}</h3>
+                        {%- if page.data.description -%}
+                        <p>{{ page.data.description }}</p>
+                        {%- endif -%}
+                    </div>
+                </a>
+                {%- endfor -%}
+            </div>
         </div>
-    </footer>
-    {% endif %}
+    </section>
+    {%- endif -%}
+
+    {%- if page.url != "/contact/" -%}
+    <section class="contact-section">
+        <div class="container">
+            <h2>Get in Touch</h2>
+            <p>Have questions or want to learn more? We'd love to hear from you.</p>
+            <a href="/contact" class="button button-primary">Contact Us</a>
+        </div>
+    </section>
+    {%- endif -%}
 </article> 
