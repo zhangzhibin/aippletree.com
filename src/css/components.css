@@ -536,8 +536,8 @@
   margin-bottom: var(--spacing-xlarge);
 }
 
-.footer-section h3 {
-  font-size: var(--font-size-large);
+.footer-section h2 {
+  font-size: var(--font-size-medium);
   color: var(--text-color);
   margin-bottom: var(--spacing-medium);
 }
