@@ -1,6 +1,7 @@
 ---
 layout: base.njk
 hideNewsletter: true
+hideGetInTouch: true
 ---
 
 {%- from "components/card.njk" import projectCard -%}
@@ -62,5 +63,3 @@ hideNewsletter: true
         {{ pagination("/projects/", page.pageNumber, page.totalPages) }}
     </div>
 </div>
-
-{{ getInTouch("Have a Project in Mind?", "Let's collaborate and create something amazing together.") }} 

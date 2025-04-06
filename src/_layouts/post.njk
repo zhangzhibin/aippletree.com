@@ -1,6 +1,8 @@
 ---
 layout: base.njk
 hideNewsletter: true
+hideGetInTouch: true
+hideAuthor: true
 ---
 
 <article class="content-article">
@@ -74,6 +76,7 @@ hideNewsletter: true
             </div>
 
             <!-- Author Bio -->
+            {%- if hideAuthor !== true -%}
             <div class="author-bio-section">
                 <h3>About the Author</h3>
                 <div class="author-info">
@@ -95,6 +98,7 @@ hideNewsletter: true
                     </div>
                 </div>
             </div>
+            {%- endif -%}
         </div>
     </footer>
 </article>

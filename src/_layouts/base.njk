@@ -38,6 +38,12 @@
         {{ content | safe }}
     </main>
 
+    <!-- Get in Touch -->
+    {%- if hideGetInTouch !== true -%}
+    {%- from "components/get-in-touch.njk" import getInTouch -%}
+    {{ getInTouch() }}
+    {%- endif -%}
+
     <!-- Newsletter -->
     {%- if hideNewsletter !== true -%}
     {% include "components/newsletter.njk" %}
