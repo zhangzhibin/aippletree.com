@@ -1,9 +1,7 @@
 ---
-layout: blog.njk
-pagination:
-  data: collections.pagedBlog
-  size: 1
-  alias: page
+layout: redirect.njk
+permalink: /blog/
+redirect: /blog/1/
 date: 2024-03-31
 eleventyExcludeFromCollections: true
 ---

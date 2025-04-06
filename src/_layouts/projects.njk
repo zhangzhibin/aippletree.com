@@ -45,7 +45,7 @@ hideGetInTouch: true
 <div class="page-container">
     <!-- Projects Grid -->
     <div class="grid grid-3">
-        {%- for project in page.projects -%}
+        {%- for project in paged.projects -%}
         <div data-technologies="{{ project.data.techStack | defaultTechStack | join(' ') }}" data-category="{{ project.data.category }}">
             {{ projectCard(project) }}
         </div>
@@ -60,6 +60,6 @@ hideGetInTouch: true
 
     <!-- Pagination -->
     <div class="pagination-wrapper">
-        {{ pagination("/projects/", page.pageNumber, page.totalPages) }}
+        {{ pagination("/projects/", paged.pageNumber, paged.totalPages) }}
     </div>
 </div>

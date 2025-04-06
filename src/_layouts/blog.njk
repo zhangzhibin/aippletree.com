@@ -26,13 +26,13 @@ hideNewsletter: true
 
     <!-- Blog Grid -->
     <div class="grid grid-3">
-        {%- for post in page.posts -%}
+        {%- for post in paged.posts -%}
         {{ blogCard(post) }}
         {%- endfor -%}
     </div>
 
     <!-- Pagination -->
     <div class="pagination-wrapper">
-        {{ pagination("/blog/", page.pageNumber, page.totalPages) }}
+        {{ pagination("/blog/", paged.pageNumber, paged.totalPages) }}
     </div>
 </div>

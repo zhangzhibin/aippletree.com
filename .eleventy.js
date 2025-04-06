@@ -29,6 +29,7 @@ module.exports = function(eleventyConfig) {
   // Configure pagination for blog
   eleventyConfig.addCollection("pagedBlog", function(collection) {
     const posts = collection.getFilteredByGlob("src/blog/**/*.md")
+      .filter(post => !post.data.eleventyExcludeFromCollections)
       .sort((a, b) => b.date - a.date);
     
     const postsPerPage = 9; // Number of posts per page
@@ -36,23 +37,21 @@ module.exports = function(eleventyConfig) {
     
     // Create array of page data first
     const pages = Array.from({ length: totalPages }, (_, i) => {
-      const pageNumber = i + 1;
       const start = i * postsPerPage;
       const end = start + postsPerPage;
       
       return {
         posts: posts.slice(start, end),
-        pageNumber: pageNumber,
+        pageNumber: i,
         totalPages: totalPages,
         href: {
-          next: pageNumber < totalPages ? `/blog/${pageNumber + 1}/` : null,
-          previous: pageNumber > 1 ? `/blog/${pageNumber - 1}/` : null,
+          next: i < totalPages - 1 ? `/blog/${i + 2}/` : null,
+          previous: i > 0 ? `/blog/${i}/` : '/blog/',
         },
         hrefs: Array.from({ length: totalPages }, (_, j) => `/blog/${j + 1}/`),
       };
     });
 
-    // Return pages in reverse order so first page is at index 0
     return pages;
   });
 
@@ -208,6 +207,7 @@ module.exports = function(eleventyConfig) {
   // Configure pagination for projects
   eleventyConfig.addCollection("pagedProjects", function(collection) {
     const projects = collection.getFilteredByGlob("src/projects/**/*.md")
+      .filter(project => !project.data.eleventyExcludeFromCollections)
       .sort((a, b) => b.date - a.date);
     
     const projectsPerPage = 9; // Number of projects per page
@@ -215,24 +215,22 @@ module.exports = function(eleventyConfig) {
     
     // Create array of page data first
     const pages = Array.from({ length: totalPages }, (_, i) => {
-      const pageNumber = i + 1;
       const start = i * projectsPerPage;
       const end = start + projectsPerPage;
       
       return {
         projects: projects.slice(start, end),
-        pageNumber: pageNumber,
+        pageNumber: i,
         totalPages: totalPages,
         href: {
-          next: pageNumber < totalPages ? `/projects/${pageNumber + 1}/` : null,
-          previous: pageNumber > 1 ? `/projects/${pageNumber - 1}/` : null,
+          next: i < totalPages - 1 ? `/projects/${i + 2}/` : null,
+          previous: i > 0 ? `/projects/${i}/` : '/projects/',
         },
         hrefs: Array.from({ length: totalPages }, (_, j) => `/projects/${j + 1}/`),
       };
     });
 
-    // Return pages in reverse order so first page is at index 0
-    return pages.reverse();
+    return pages;
   });
 
   return {
