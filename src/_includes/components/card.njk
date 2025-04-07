@@ -1,7 +1,9 @@
 {%- macro blogCard(post) -%}
 <article class="card card-blog">
   <div class="card-image">
-    <img src="{{ post.data.thumbnail | default(post.data.image) | defaultThumbnail('blog') }}" alt="{{ post.data.title }}">
+    <a href="{{ post.url }}" class="card-image-link">
+      <img src="{{ post.data.thumbnail | default(post.data.image) | defaultThumbnail('blog') }}" alt="{{ post.data.title }}">
+    </a>
   </div>
   <div class="card-content">
     <h3 class="card-title">
@@ -32,7 +34,9 @@
 {%- macro projectCard(project) -%}
 <article class="card card-project">
   <div class="card-image">
-    <img src="{{ project.data.thumbnail | default(project.data.image) | defaultThumbnail('project') }}" alt="{{ project.data.title }}">
+    <a href="{{ project.url }}" class="card-image-link">
+      <img src="{{ project.data.thumbnail | default(project.data.image) | defaultThumbnail('project') }}" alt="{{ project.data.title }}">
+    </a>
   </div>
   <div class="card-content">
     <h3 class="card-title">
