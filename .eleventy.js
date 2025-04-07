@@ -35,22 +35,34 @@ module.exports = function(eleventyConfig) {
     const postsPerPage = 9; // Number of posts per page
     const totalPages = Math.ceil(posts.length / postsPerPage);
     
+    console.log(`[Pagination] Total posts: ${posts.length}, Pages needed: ${totalPages}`);
+    
     // Create array of page data first
     const pages = Array.from({ length: totalPages }, (_, i) => {
       const start = i * postsPerPage;
       const end = start + postsPerPage;
+      const pageNumber = i + 1; // 从 1 开始
+      
+      // 验证页码是否有效
+      if (pageNumber > totalPages) {
+        console.log(`[Pagination] Skip invalid page ${pageNumber} > ${totalPages}`);
+        return null;
+      }
+      
+      const pageContent = posts.slice(start, end);
+      console.log(`[Pagination] Page ${pageNumber}: ${pageContent.length} posts`);
       
       return {
-        posts: posts.slice(start, end),
-        pageNumber: i,
+        posts: pageContent,
+        pageNumber: pageNumber,
         totalPages: totalPages,
         href: {
-          next: i < totalPages - 1 ? `/blog/${i + 2}/` : null,
-          previous: i > 0 ? `/blog/${i}/` : '/blog/',
+          next: pageNumber < totalPages ? `/blog/${pageNumber + 1}/` : null,
+          previous: pageNumber > 1 ? `/blog/${pageNumber - 1}/` : '/blog/',
         },
         hrefs: Array.from({ length: totalPages }, (_, j) => `/blog/${j + 1}/`),
       };
-    });
+    }).filter(page => page !== null); // 过滤掉无效的页面
 
     return pages;
   });
@@ -210,25 +222,36 @@ module.exports = function(eleventyConfig) {
       .filter(project => !project.data.eleventyExcludeFromCollections)
       .sort((a, b) => b.date - a.date);
     
-    const projectsPerPage = 9; // Number of projects per page
+    const projectsPerPage = 9;
     const totalPages = Math.ceil(projects.length / projectsPerPage);
     
-    // Create array of page data first
+    console.log(`[Pagination] Total projects: ${projects.length}, Pages needed: ${totalPages}`);
+    
     const pages = Array.from({ length: totalPages }, (_, i) => {
       const start = i * projectsPerPage;
       const end = start + projectsPerPage;
+      const pageNumber = i + 1; // 从 1 开始
+      
+      // 验证页码是否有效
+      if (pageNumber > totalPages) {
+        console.log(`[Pagination] Skip invalid page ${pageNumber} > ${totalPages}`);
+        return null;
+      }
+      
+      const pageContent = projects.slice(start, end);
+      console.log(`[Pagination] Page ${pageNumber}: ${pageContent.length} projects`);
       
       return {
-        projects: projects.slice(start, end),
-        pageNumber: i,
+        projects: pageContent,
+        pageNumber: pageNumber,
         totalPages: totalPages,
         href: {
-          next: i < totalPages - 1 ? `/projects/${i + 2}/` : null,
-          previous: i > 0 ? `/projects/${i}/` : '/projects/',
+          next: pageNumber < totalPages ? `/projects/${pageNumber + 1}/` : null,
+          previous: pageNumber > 1 ? `/projects/${pageNumber - 1}/` : '/projects/',
         },
         hrefs: Array.from({ length: totalPages }, (_, j) => `/projects/${j + 1}/`),
       };
-    });
+    }).filter(page => page !== null); // 过滤掉无效的页面
 
     return pages;
   });
