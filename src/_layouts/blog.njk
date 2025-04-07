@@ -1,7 +1,10 @@
 ---
 layout: base.njk
+title: Blog - Insights and Tutorials
+description: Explore our collection of articles, tutorials, and insights on technology, web development, and creative coding.
 hideNewsletter: true
 hideGetInTouch: true
+hideCategories: false
 ---
 
 {%- from "components/card.njk" import blogCard -%}
@@ -18,12 +21,14 @@ hideGetInTouch: true
 <!-- Blog Content -->
 <div class="page-container">
     <!-- Categories -->
+    {%- if not hideCategories -%}
     <div class="categories">
         <button class="tag active" data-category="all">All</button>
         {%- for category in collections.categories -%}
         <button class="tag" data-category="{{ category }}">{{ category }}</button>
         {%- endfor -%}
     </div>
+    {%- endif -%}
 
     <!-- Blog Grid -->
     <div class="grid grid-3">
