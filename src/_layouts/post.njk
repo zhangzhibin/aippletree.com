@@ -108,22 +108,9 @@ hideAuthor: true
     <div class="page-container">
         <h2>Related Articles</h2>
         <div class="grid grid-3">
+            {%- from "components/card.njk" import blogCard -%}
             {%- for post in collections.relatedPosts -%}
-            <article class="blog-card">
-                <div class="blog-card-image">
-                    <img src="{{ post.data.image }}" alt="{{ post.data.title }}">
-                </div>
-                <div class="blog-card-content">
-                    <h3 class="blog-card-title">
-                        <a href="{{ post.url }}">{{ post.data.title }}</a>
-                    </h3>
-                    <p class="blog-card-description">{{ post.data.description }}</p>
-                    <div class="blog-card-meta">
-                        <span class="blog-card-date">{{ post.date | date("%B %d, %Y") }}</span>
-                        <span class="blog-card-read-time">{{ post.data.readTime }} min read</span>
-                    </div>
-                </div>
-            </article>
+            {{ blogCard(post) }}
             {%- endfor -%}
         </div>
     </div>
