@@ -1,0 +1,11 @@
+{%- macro button(text, url, type="primary", size="medium", class="") -%}
+<a href="{{ url }}" class="button button-{{ type }} button-{{ size }} {{ class }}">
+  {{ text }}
+</a>
+{%- endmacro -%}
+
+{%- macro submitButton(text, type="primary", size="medium", class="") -%}
+<button type="submit" class="button button-{{ type }} button-{{ size }} {{ class }}">
+  {{ text }}
+</button>
+{%- endmacro -%} 

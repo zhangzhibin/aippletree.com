@@ -1,17 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    {% include "components/layout/head.njk" %}
-</head>
-<body class="layout">
-    {% include "components/layout/nav.njk" %}
-    {% include "components/layout/background.njk" %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title }}{% if title %} | {% endif %}AippleTree</title>
+    <meta name="description" content="{{ description }}">
     
-    <main class="layout-content">
-        {% include "components/layout/container.njk" %}
+    <!-- Open Graph / Social Media -->
+    <meta property="og:title" content="{{ title }}{% if title %} |{% endif %}AippleTree">
+    <meta property="og:description" content="{{ description }}">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://aippletree.com{{ page.url }}">
+    <meta property="og:image" content="/assets/images/og-image.jpg">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="/assets/images/favicon.ico" type="image/x-icon">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/layouts.css">
+    <link rel="stylesheet" href="/css/components.css">
+    
+    <!-- Preload critical resources -->
+    <link rel="preload" href="/assets/images/logo.svg" as="image">
+</head>
+<body>
+    <!-- Navigation -->
+    {% include "components/nav.njk" %}
+
+    <!-- Main Content -->
+    <main>
+        {{ content | safe }}
     </main>
 
-    {% include "components/layout/footer.njk" %}
-    <script src="/js/main.js" defer></script>
+    <!-- Get in Touch -->
+    {%- if hideGetInTouch !== true -%}
+    {%- from "components/get-in-touch.njk" import getInTouch -%}
+    {{ getInTouch() }}
+    {%- endif -%}
+
+    <!-- Newsletter -->
+    {%- if hideNewsletter !== true -%}
+    {% include "components/newsletter.njk" %}
+    {%- endif -%}
+
+    <!-- Footer -->
+    {%- include "components/footer.njk" -%}
 </body>
 </html> 

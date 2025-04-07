@@ -1,0 +1,67 @@
+---
+layout: base.njk
+hideGetInTouch: true
+hideNewsletter: true
+title: Welcome to AippleTree
+description: Exploring the intersection of technology and creativity through innovative projects and insightful articles.
+---
+
+{%- from "components/card.njk" import projectCard, blogCard -%}
+
+<!-- Hero Section -->
+<section class="hero">
+    <div class="page-container">
+        <h1>Welcome to AippleTree</h1>
+        <p class="hero-description">Exploring the intersection of technology and creativity through innovative projects and insightful articles.</p>
+        <div class="hero-buttons">
+            <a href="/projects/1/" class="button button-primary">View Projects</a>
+            <a href="/blog/1/" class="button button-outline">Read Blog</a>
+        </div>
+    </div>
+</section>
+
+<!-- Featured Projects -->
+<section class="featured-projects">
+    <div class="page-container">
+        <h2>Featured Projects</h2>
+        <div class="grid grid-3">
+            {%- for project in collections.featuredProjects -%}
+            {{ projectCard(project) }}
+            {%- endfor -%}
+        </div>
+        <div class="section-footer">
+            <a href="/projects/1/" class="button button-secondary">View All Projects</a>
+        </div>
+    </div>
+</section>
+
+<!-- Latest Articles -->
+<section class="latest-articles">
+    <div class="page-container">
+        <h2>Latest Articles</h2>
+        <div class="grid grid-3">
+            {%- for post in collections.blog | limit(3) -%}
+            {{ blogCard(post) }}
+            {%- endfor -%}
+        </div>
+        <div class="section-footer">
+            <a href="/blog/1/" class="button button-secondary">Read All Articles</a>
+        </div>
+    </div>
+</section>
+
+<!-- About Section -->
+<section class="about-preview">
+    <div class="page-container">
+        <div class="about-content">
+            <div class="about-text">
+                <h2>About AippleTree</h2>
+                <p>AippleTree is a platform dedicated to exploring and sharing innovative ideas at the intersection of technology and creativity. We believe in the power of combining technical expertise with creative thinking to solve complex problems and create meaningful experiences.</p>
+                <a href="/about" class="button button-primary">Learn More</a>
+            </div>
+            <div class="about-image">
+                <img src="https://placehold.co/600x400/4A90E2/FFFFFF?text=About+AippleTree" alt="About AippleTree">
+            </div>
+        </div>
+    </div>
+</section> 

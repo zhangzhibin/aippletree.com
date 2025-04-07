@@ -1,0 +1,38 @@
+{%- macro pagination(baseHref, pageNumber, totalPages) -%}
+{%- if totalPages > 1 -%}
+<nav class="pagination" aria-label="Pagination">
+  <ul class="pagination-list">
+    {%- if pageNumber > 1 -%}
+    <li class="pagination-item">
+      <a href="{{ baseHref }}{{ pageNumber - 1 }}/" class="pagination-link" aria-label="Previous page">
+        <span class="icon-arrow-left"></span>
+        Previous
+      </a>
+    </li>
+    {%- endif -%}
+
+    {%- for page in range(1, totalPages + 1) -%}
+    <li class="pagination-item">
+      <a href="{{ baseHref }}{{ page }}/" 
+         class="pagination-link{% if page == pageNumber %} active{% endif %}"
+         aria-label="Page {{ page }}"
+         {% if page == pageNumber %}aria-current="page"{% endif %}>
+        {{ page }}
+      </a>
+    </li>
+    {%- endfor -%}
+
+    {%- if pageNumber < totalPages -%}
+    <li class="pagination-item">
+      <a href="{{ baseHref }}{{ pageNumber + 1 }}/" class="pagination-link" aria-label="Next page">
+        Next
+        <span class="icon-arrow-right"></span>
+      </a>
+    </li>
+    {%- endif -%}
+  </ul>
+</nav>
+{%- else -%}
+<!-- No pagination needed -->
+{%- endif -%}
+{%- endmacro -%} 

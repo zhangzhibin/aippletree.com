@@ -1,27 +1,44 @@
 ---
 layout: base.njk
-templateClass: template-blog
-bodyClass: page-blog
-seo:
-  changefreq: daily
-  priority: 0.8
-  robots: index, follow
-components:
-  header: {}
-  footer:
-    showNewsletter: true
+title: Blog - Insights and Tutorials
+description: Explore our collection of articles, tutorials, and insights on technology, web development, and creative coding.
+hideNewsletter: true
+hideGetInTouch: true
+hideCategories: false
 ---
 
-<article class="blog-page">
-    <header class="blog-header">
-        {% include "components/ui/page-title.njk" %}
-        {% set submitBanner = global.components.submitBanner %}
-        {% include "components/ui/submit-banner.njk" %}
-    </header>
+{%- from "components/card.njk" import blogCard -%}
+{%- from "components/pagination.njk" import pagination -%}
 
-    <section class="blog-grid">
-        {% for post in collections.blog | reverse %}
-            {% include "components/ui/blog-card.njk" %}
-        {% endfor %}
-    </section>
-</article> 
+<!-- Blog Header -->
+<header class="content-header">
+    <div class="page-container">
+        <h1>Blog</h1>
+        <p class="content-description">Insights, tutorials, and thoughts on technology and creativity.</p>
+    </div>
+</header>
+
+<!-- Blog Content -->
+<div class="page-container">
+    <!-- Categories -->
+    {%- if not hideCategories -%}
+    <div class="categories">
+        <button class="tag active" data-category="all">All</button>
+        {%- for category in collections.categories -%}
+        <button class="tag" data-category="{{ category }}">{{ category }}</button>
+        {%- endfor -%}
+    </div>
+    {%- endif -%}
+
+    <!-- Blog Grid -->
+    <div class="grid grid-3">
+        {%- for post in paged.posts -%}
+        {{ blogCard(post) }}
+        {%- endfor -%}
+    </div>
+
+    <!-- Pagination -->
+    <div class="pagination-wrapper">
+        {{ pagination("/blog/", paged.pageNumber, paged.totalPages) }}
+    </div>
+</div>

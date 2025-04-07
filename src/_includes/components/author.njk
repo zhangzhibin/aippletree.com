@@ -1,0 +1,30 @@
+{%- macro authorInfo(author) -%}
+<div class="author-info">
+  {%- if author.avatar -%}
+  <img src="{{ author.avatar }}" alt="{{ author.name }}" class="author-avatar" width="48" height="48">
+  {%- endif -%}
+  <div class="author-details">
+    <h4 class="author-name">{{ author.name }}</h4>
+    {%- if author.bio -%}
+    <p class="author-bio">{{ author.bio }}</p>
+    {%- endif -%}
+    <div class="author-social">
+      {%- if author.twitter -%}
+      <a href="https://twitter.com/{{ author.twitter }}" class="social-link" target="_blank" rel="noopener">
+        <span class="icon-twitter"></span>
+      </a>
+      {%- endif -%}
+      {%- if author.github -%}
+      <a href="https://github.com/{{ author.github }}" class="social-link" target="_blank" rel="noopener">
+        <span class="icon-github"></span>
+      </a>
+      {%- endif -%}
+      {%- if author.linkedin -%}
+      <a href="https://linkedin.com/in/{{ author.linkedin }}" class="social-link" target="_blank" rel="noopener">
+        <span class="icon-linkedin"></span>
+      </a>
+      {%- endif -%}
+    </div>
+  </div>
+</div>
+{%- endmacro -%} 

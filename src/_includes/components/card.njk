@@ -1,0 +1,62 @@
+{%- macro blogCard(post) -%}
+<article class="card card-blog">
+  <div class="card-image">
+    <a href="{{ post.url }}" class="card-image-link">
+      <img src="{{ post.data.thumbnail | default(post.data.image) | defaultThumbnail('blog') }}" alt="{{ post.data.title }}">
+    </a>
+  </div>
+  <div class="card-content">
+    <h3 class="card-title">
+      <a href="{{ post.url }}">{{ post.data.title }}</a>
+    </h3>
+    {%- if post.data.description -%}
+    <p class="card-description">{{ post.data.description }}</p>
+    {%- endif -%}
+    <div class="card-meta">
+      <time datetime="{{ post.date | dateToISO }}">
+        {{ post.date | date("%B %d, %Y") }}
+      </time>
+      {%- if post.data.readingTime -%}
+      <span class="read-time">{{ post.data.readingTime }} min read</span>
+      {%- endif -%}
+    </div>
+    {%- if post.data.categories -%}
+    <div class="card-tags">
+      {%- for category in post.data.categories -%}
+      <span class="tag">{{ category }}</span>
+      {%- endfor -%}
+    </div>
+    {%- endif -%}
+  </div>
+</article>
+{%- endmacro -%}
+
+{%- macro projectCard(project) -%}
+<article class="card card-project">
+  <div class="card-image">
+    <a href="{{ project.url }}" class="card-image-link">
+      <img src="{{ project.data.thumbnail | default(project.data.image) | defaultThumbnail('project') }}" alt="{{ project.data.title }}">
+    </a>
+  </div>
+  <div class="card-content">
+    <h3 class="card-title">
+      <a href="{{ project.url }}">{{ project.data.title }}</a>
+    </h3>
+    {%- if project.data.description -%}
+    <p class="card-description">{{ project.data.description }}</p>
+    {%- endif -%}
+    {%- if project.data.techStack -%}
+    <div class="card-tags">
+      {%- for tech in project.data.techStack | defaultTechStack -%}
+      <span class="tech-tag">{{ tech }}</span>
+      {%- endfor -%}
+    </div>
+    {%- endif -%}
+    {%- if project.data.category -%}
+    <div class="card-category">
+      <span class="category">{{ project.data.category }}</span>
+    </div>
+    {%- endif -%}
+  </div>
+</article>
+{%- endmacro -%} 

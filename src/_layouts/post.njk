@@ -1,23 +1,117 @@
 ---
 layout: base.njk
+hideNewsletter: true
+hideGetInTouch: true
+hideAuthor: true
 ---
 
-<article class="post">
-    <header class="post-header">
-        <h1 class="post-title">{{ title }}</h1>
-        <div class="post-meta">
-            {% include "components/ui/post-meta.njk" %}
-            {% include "components/ui/post-tags.njk" %}
+<article class="content-article">
+    <!-- Article Header -->
+    <header class="content-header">
+        <div class="page-container">
+            <div class="content-meta">
+                <div class="content-categories">
+                    {%- for category in categories -%}
+                    <span class="tag">{{ category }}</span>
+                    {%- endfor -%}
+                </div>
+                <time datetime="{{ date | dateToISO }}">{{ date | date("%B %d, %Y") }}</time>
+                <span class="read-time">{{ readTime }} min read</span>
+            </div>
+            <h1>{{ title }}</h1>
+            {%- if description -%}
+            <p class="content-description">{{ description }}</p>
+            {%- endif -%}
+            <div class="author-info">
+                <img src="{{ author.avatar }}" alt="{{ author.name }}" class="author-avatar">
+                <div class="author-details">
+                    <span class="author-name">{{ author.name }}</span>
+                    <span class="author-bio">{{ author.bio }}</span>
+                </div>
+            </div>
         </div>
     </header>
 
-    <div class="post-content">
-        {{ content | safe }}
+    <!-- Featured Image -->
+    {%- if image -%}
+    <div class="content-image">
+        <img src="{{ image }}" alt="{{ title }}">
+    </div>
+    {%- endif -%}
+
+    <!-- Article Content -->
+    <div class="content-body">
+        <div class="page-container">
+            {{ content | safe }}
+        </div>
     </div>
 
-    {% if author %}
-    <footer class="post-footer">
-        {% include "components/ui/author-info.njk" %}
+    <!-- Article Footer -->
+    <footer class="content-footer">
+        <div class="page-container">
+            <!-- Tags -->
+            <div class="content-tags">
+                {%- for tag in tags -%}
+                <span class="tag">{{ tag }}</span>
+                {%- endfor -%}
+            </div>
+
+            <!-- Share Buttons -->
+            <div class="share-buttons">
+                <h3>Share this article</h3>
+                <div class="social-share">
+                    <a href="https://twitter.com/intent/tweet?text={{ title | urlencode }}&url={{ url | urlencode }}" 
+                       target="_blank" 
+                       rel="noopener" 
+                       class="button button-secondary">
+                        Share on Twitter
+                    </a>
+                    <a href="https://www.linkedin.com/shareArticle?mini=true&url={{ url | urlencode }}&title={{ title | urlencode }}" 
+                       target="_blank" 
+                       rel="noopener" 
+                       class="button button-secondary">
+                        Share on LinkedIn
+                    </a>
+                </div>
+            </div>
+
+            <!-- Author Bio -->
+            {%- if hideAuthor !== true -%}
+            <div class="author-bio-section">
+                <h3>About the Author</h3>
+                <div class="author-info">
+                    <img src="{{ author.avatar }}" alt="{{ author.name }}" class="author-avatar">
+                    <div class="author-details">
+                        <h4 class="author-name">{{ author.name }}</h4>
+                        <p class="author-bio">{{ author.bio }}</p>
+                        <div class="author-social">
+                            {%- if author.twitter -%}
+                            <a href="{{ author.twitter }}" target="_blank" rel="noopener">Twitter</a>
+                            {%- endif -%}
+                            {%- if author.github -%}
+                            <a href="{{ author.github }}" target="_blank" rel="noopener">GitHub</a>
+                            {%- endif -%}
+                            {%- if author.linkedin -%}
+                            <a href="{{ author.linkedin }}" target="_blank" rel="noopener">LinkedIn</a>
+                            {%- endif -%}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {%- endif -%}
+        </div>
     </footer>
-    {% endif %}
-</article> 
+</article>
+
+<!-- Related Posts -->
+<section class="related-posts">
+    <div class="page-container">
+        <h2>Related Articles</h2>
+        <div class="grid grid-3">
+            {%- from "components/card.njk" import blogCard -%}
+            {%- for post in collections.relatedPosts -%}
+            {{ blogCard(post) }}
+            {%- endfor -%}
+        </div>
+    </div>
+</section> 
